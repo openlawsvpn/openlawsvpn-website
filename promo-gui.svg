@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520"
+     font-family="system-ui,-apple-system,'Helvetica Neue',sans-serif">
+  <defs>
+    <clipPath id="clip-left">
+      <rect x="110" y="88" width="280" height="340" rx="12"/>
+    </clipPath>
+    <clipPath id="clip-right">
+      <rect x="810" y="88" width="280" height="340" rx="12"/>
+    </clipPath>
+    <filter id="win-shadow" x="-8%" y="-4%" width="120%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arr-g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#3fb950"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="520" fill="#0d1117"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#161b22" stroke-width="1">
+    <line x1="0"    y1="260" x2="1200" y2="260"/>
+    <line x1="400"  y1="0"   x2="400"  y2="520"/>
+    <line x1="800"  y1="0"   x2="800"  y2="520"/>
+  </g>
+
+  <!-- Wordmark top-left -->
+  <text x="32" y="44" font-size="22" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#e6edf3">open</tspan><tspan fill="#f78166" font-weight="300">|</tspan><tspan fill="#8b949e">aws</tspan><tspan fill="#e6edf3">vpn</tspan>
+  </text>
+  <text x="32" y="62" font-size="11" fill="#8b949e">GTK4 + libadwaita · v1.0.2 · Fedora 43/44/rawhide · amd64 / arm64 / ppc64le</text>
+
+  <!-- State labels -->
+  <text x="250" y="80" text-anchor="middle" font-size="11" fill="#8b949e"
+        font-weight="600" letter-spacing="0.1em">IDLE</text>
+  <text x="950" y="80" text-anchor="middle" font-size="11" fill="#3fb950"
+        font-weight="600" letter-spacing="0.1em">CONNECTED</text>
+
+  <!-- Tray chips -->
+  <rect x="152" y="66" width="196" height="22" rx="11" fill="#1f2428" stroke="#30363d" stroke-width="1"/>
+  <text x="170" y="81" font-size="14" fill="#d97706">♡</text>
+  <text x="188" y="81" font-size="10" fill="#8b949e">System tray · idle</text>
+
+  <rect x="852" y="66" width="196" height="22" rx="11" fill="#1a2e1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="870" y="81" font-size="14" fill="#f78166">♥</text>
+  <text x="888" y="81" font-size="10" fill="#3fb950">System tray · connected</text>
+
+  <!-- ══════════ LEFT WINDOW (IDLE) ══════════ -->
+  <g filter="url(#win-shadow)">
+    <rect x="110" y="88" width="280" height="340" rx="12" fill="#fafafa"/>
+  </g>
+
+  <g clip-path="url(#clip-left)">
+    <!-- Title bar -->
+    <rect x="110" y="88" width="280" height="220" fill="#f5f4f3"/>
+    <rect x="110" y="88" width="280" height="36"  fill="#e2e0df"/>
+
+    <!-- Traffic lights -->
+    <circle cx="130" cy="106" r="5.5" fill="#ff5f57"/>
+    <circle cx="148" cy="106" r="5.5" fill="#febc2e"/>
+    <circle cx="166" cy="106" r="5.5" fill="#28c840"/>
+
+    <!-- Window title -->
+    <text x="250" y="110" text-anchor="middle" font-size="12" fill="#333333">openlawsvpn</text>
+
+    <!-- Profiles heading -->
+    <text x="126" y="154" font-size="17" font-weight="700" fill="#1a1a1a">Profiles</text>
+
+    <!-- Profile card -->
+    <rect x="118" y="164" width="264" height="54" rx="8" fill="#ffffff" stroke="#dedad9" stroke-width="1"/>
+    <text x="130" y="187" font-size="12" fill="#1a1a1a">downloaded-client-config</text>
+
+    <!-- Connect button -->
+    <rect x="302" y="174" width="72" height="26" rx="13" fill="#3584e4"/>
+    <text x="338" y="192" text-anchor="middle" font-size="11" fill="#ffffff" font-weight="600">Connect</text>
+
+    <!-- + Add Profile -->
+    <rect x="118" y="228" width="264" height="30" rx="6" fill="#ebebeb"/>
+    <text x="250" y="248" text-anchor="middle" font-size="12" fill="#666666">+ Add Profile</text>
+
+    <!-- Nav separator -->
+    <line x1="110" y1="378" x2="390" y2="378" stroke="#d8d6d5" stroke-width="1"/>
+
+    <!-- Bottom nav -->
+    <rect x="110" y="378" width="280" height="50" fill="#e2e0df"/>
+
+    <!-- Active: Connect -->
+    <rect x="116" y="383" width="60" height="40" rx="5" fill="#d4d2d1"/>
+    <text x="146" y="399" text-anchor="middle" font-size="16" fill="#333333">⊕</text>
+    <text x="146" y="413" text-anchor="middle" font-size="9"  fill="#333333" font-weight="700">Connect</text>
+
+    <!-- Relay -->
+    <text x="216" y="399" text-anchor="middle" font-size="16" fill="#888888">⇄</text>
+    <text x="216" y="413" text-anchor="middle" font-size="9"  fill="#888888">Relay</text>
+
+    <!-- Log -->
+    <text x="286" y="399" text-anchor="middle" font-size="16" fill="#888888">☰</text>
+    <text x="286" y="413" text-anchor="middle" font-size="9"  fill="#888888">Log</text>
+
+    <!-- About -->
+    <text x="358" y="399" text-anchor="middle" font-size="16" fill="#888888">ⓘ</text>
+    <text x="358" y="413" text-anchor="middle" font-size="9"  fill="#888888">About</text>
+  </g>
+
+  <!-- Window border (drawn on top to crisp corners) -->
+  <rect x="110" y="88" width="280" height="340" rx="12" fill="none" stroke="#d0cecd" stroke-width="1"/>
+
+  <!-- ══════════ TRANSITION ARROW ══════════ -->
+  <line x1="420" y1="260" x2="784" y2="260"
+        stroke="#3fb950" stroke-width="2" stroke-dasharray="6,3"
+        marker-end="url(#arr-g)"/>
+  <text x="602" y="248" text-anchor="middle" font-size="11" fill="#3fb950" font-weight="700">VPN Connect</text>
+  <text x="602" y="264" text-anchor="middle" font-size="10" fill="#56d364">SAML / SSO flow →</text>
+
+  <!-- ══════════ RIGHT WINDOW (CONNECTED) ══════════ -->
+  <g filter="url(#win-shadow)">
+    <rect x="810" y="88" width="280" height="340" rx="12" fill="#fafafa"/>
+  </g>
+
+  <g clip-path="url(#clip-right)">
+    <!-- Title bar -->
+    <rect x="810" y="88" width="280" height="220" fill="#f5f4f3"/>
+    <rect x="810" y="88" width="280" height="36"  fill="#e2e0df"/>
+
+    <!-- Traffic lights -->
+    <circle cx="830" cy="106" r="5.5" fill="#ff5f57"/>
+    <circle cx="848" cy="106" r="5.5" fill="#febc2e"/>
+    <circle cx="866" cy="106" r="5.5" fill="#28c840"/>
+
+    <!-- Window title -->
+    <text x="950" y="110" text-anchor="middle" font-size="12" fill="#333333">openlawsvpn</text>
+
+    <!-- Profiles heading -->
+    <text x="826" y="154" font-size="17" font-weight="700" fill="#1a1a1a">Profiles</text>
+
+    <!-- Profile card (connected, taller for status row) -->
+    <rect x="818" y="164" width="264" height="64" rx="8" fill="#ffffff" stroke="#dedad9" stroke-width="1"/>
+
+    <!-- Profile name (wraps to fit button) -->
+    <text x="830" y="184" font-size="12" fill="#1a1a1a" font-weight="600">downloaded-client-</text>
+    <text x="830" y="198" font-size="12" fill="#1a1a1a" font-weight="600">config</text>
+
+    <!-- Connected status -->
+    <circle cx="830" cy="215" r="4" fill="#57e389"/>
+    <text x="838" y="219" font-size="10" fill="#57e389" font-weight="500">Connected</text>
+
+    <!-- Disconnect button -->
+    <rect x="986" y="176" width="86" height="26" rx="13" fill="#3584e4"/>
+    <text x="1029" y="194" text-anchor="middle" font-size="10.5" fill="#ffffff" font-weight="600">Disconnect</text>
+
+    <!-- + Add Profile -->
+    <rect x="818" y="238" width="264" height="30" rx="6" fill="#ebebeb"/>
+    <text x="950" y="258" text-anchor="middle" font-size="12" fill="#666666">+ Add Profile</text>
+
+    <!-- Nav separator -->
+    <line x1="810" y1="378" x2="1090" y2="378" stroke="#d8d6d5" stroke-width="1"/>
+
+    <!-- Bottom nav -->
+    <rect x="810" y="378" width="280" height="50" fill="#e2e0df"/>
+
+    <!-- Active: Connect -->
+    <rect x="816" y="383" width="60" height="40" rx="5" fill="#d4d2d1"/>
+    <text x="846" y="399" text-anchor="middle" font-size="16" fill="#333333">⊕</text>
+    <text x="846" y="413" text-anchor="middle" font-size="9"  fill="#333333" font-weight="700">Connect</text>
+
+    <!-- Relay -->
+    <text x="916" y="399" text-anchor="middle" font-size="16" fill="#888888">⇄</text>
+    <text x="916" y="413" text-anchor="middle" font-size="9"  fill="#888888">Relay</text>
+
+    <!-- Log -->
+    <text x="986" y="399" text-anchor="middle" font-size="16" fill="#888888">☰</text>
+    <text x="986" y="413" text-anchor="middle" font-size="9"  fill="#888888">Log</text>
+
+    <!-- About -->
+    <text x="1058" y="399" text-anchor="middle" font-size="16" fill="#888888">ⓘ</text>
+    <text x="1058" y="413" text-anchor="middle" font-size="9"  fill="#888888">About</text>
+  </g>
+
+  <!-- Window border -->
+  <rect x="810" y="88" width="280" height="340" rx="12" fill="none" stroke="#d0cecd" stroke-width="1"/>
+
+  <!-- Caption bar -->
+  <line x1="0" y1="456" x2="1200" y2="456" stroke="#30363d" stroke-width="1"/>
+  <text x="600" y="478" text-anchor="middle" font-size="12" fill="#8b949e">
+    <tspan fill="#e6edf3" font-weight="600">GNOME desktop GUI</tspan>
+    <tspan> · GTK4 + libadwaita · tray icon reflects VPN state · Ships as RPM via COPR · LGPL-2.1</tspan>
+  </text>
+  <text x="600" y="498" text-anchor="middle" font-size="10" fill="#6e7681">
+    relay backend: OWASP-hardened · token auth · ownership checks · payload limits · CloudWatch alerting
+  </text>
+</svg>

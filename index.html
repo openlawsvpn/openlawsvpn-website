@@ -338,7 +338,7 @@
 
       <div class="hero-badge">
         <span class="dot">●</span>
-        v1.0.2 Linux · v1.0.1 Android · GTK4 GUI · relay v1.0.2 · FC43/44/rawhide · amd64/arm64/ppc64le
+        v1.0.4 Linux · v1.0.1 Android · GTK4 GUI · relay v1.0.4 · FC43/44/rawhide · amd64/arm64/ppc64le
       </div>
 
       <div class="hero-cta">
@@ -366,7 +366,7 @@
         <div class="feature-card">
           <span class="icon">🐧</span>
           <h3>Native Linux CLI</h3>
-          <p>Statically linked binary. No Mono, no Java, no Electron. Root or rootless D-Bus mode via openvpn3.</p>
+          <p>Statically linked binary. No Mono, no Java, no Electron. Pure Go — zero runtime dependencies.</p>
           <span class="tag">working</span>
         </div>
 
@@ -388,7 +388,7 @@
           <span class="icon">⚙️</span>
           <h3>Relay — Headless Auth</h3>
           <p>CI/CD runners and remote VMs can't open a browser. Relay lets a human approve VPN auth from their phone with one tap.</p>
-          <span class="tag">v1.0.2</span>
+          <span class="tag">v1.0.4</span>
         </div>
 
         <div class="feature-card">
@@ -402,7 +402,7 @@
           <span class="icon">🔒</span>
           <h3>Security Hardened</h3>
           <p>Relay backend passes full OWASP audit: token auth on every endpoint, per-user ownership checks, payload limits, and CloudWatch alerting on auth failures.</p>
-          <span class="tag">v1.0.2</span>
+          <span class="tag">v1.0.4</span>
         </div>
 
       </div>
@@ -688,10 +688,12 @@
               <div class="sub-tabs">
                 <input type="radio" name="binary-tab" id="btab-amd64" checked>
                 <input type="radio" name="binary-tab" id="btab-arm64">
+                <input type="radio" name="binary-tab" id="btab-ppc64le">
 
                 <div class="sub-tab-labels">
                   <label for="btab-amd64">amd64</label>
                   <label for="btab-arm64">arm64</label>
+                  <label for="btab-ppc64le">ppc64le</label>
                 </div>
 
                 <div class="sub-tab-panels">
@@ -707,11 +709,17 @@ curl -LO $BASE/openlawsvpn-cli-linux-arm64
 chmod +x openlawsvpn-cli-linux-arm64
 sudo mv openlawsvpn-cli-linux-arm64 /usr/local/bin/openlawsvpn-cli</code></pre>
                   </div>
+                  <div class="sub-tab-panel" id="bpanel-ppc64le">
+                    <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-linux-ppc64le
+chmod +x openlawsvpn-cli-linux-ppc64le
+sudo mv openlawsvpn-cli-linux-ppc64le /usr/local/bin/openlawsvpn-cli</code></pre>
+                  </div>
                 </div>
               </div>
 
               <p class="install-note">statically linked, zero dependencies — requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
-              <p class="install-note">for ppc64le, rootless D-Bus mode, or GUI — use the Fedora / RHEL tab</p>
+              <p class="install-note">for GUI or Fedora RPM — use the Fedora / RHEL tab</p>
 
             </div>
           </div>
@@ -725,8 +733,8 @@ sudo mv openlawsvpn-cli-linux-arm64 /usr/local/bin/openlawsvpn-cli</code></pre>
                 <input type="radio" name="fedora-tab" id="ftab-gui">
 
                 <div class="sub-tab-labels">
-                  <label for="ftab-root">CLI (root)</label>
-                  <label for="ftab-rootless">CLI (rootless)</label>
+                  <label for="ftab-root">CLI</label>
+                  <label for="ftab-rootless">CLI (relay)</label>
                   <label for="ftab-gui">GUI</label>
                 </div>
 
@@ -734,15 +742,14 @@ sudo mv openlawsvpn-cli-linux-arm64 /usr/local/bin/openlawsvpn-cli</code></pre>
                   <div class="sub-tab-panel" id="fpanel-root">
                     <pre><code>dnf copr enable vorona/openlawsvpn -y
 dnf install openlawsvpn-cli -y
-openlawsvpn-cli connect ~/Downloads/downloaded-client-config.ovpn --standalone</code></pre>
-                    <p class="install-note">standalone mode — requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
+sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></pre>
+                    <p class="install-note">requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
                     <p class="install-note">relay mode: openlawsvpn-cli -relay &lt;token&gt; -daemon</p>
                   </div>
                   <div class="sub-tab-panel" id="fpanel-rootless">
                     <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
-sudo dnf install openlawsvpn-cli openvpn3 -y
-openlawsvpn-cli connect ~/Downloads/downloaded-client-config.ovpn</code></pre>
-                    <p class="install-note">rootless D-Bus mode — requires openvpn3</p>
+sudo dnf install openlawsvpn-cli -y
+sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></pre>
                     <p class="install-note">relay mode: openlawsvpn-cli -relay &lt;token&gt; -daemon</p>
                   </div>
                   <div class="sub-tab-panel" id="fpanel-gui">

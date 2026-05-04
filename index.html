@@ -283,7 +283,8 @@
     #ftab-rootless:checked ~ .sub-tab-labels label[for="ftab-rootless"],
     #ftab-gui:checked      ~ .sub-tab-labels label[for="ftab-gui"],
     #btab-amd64:checked    ~ .sub-tab-labels label[for="btab-amd64"],
-    #btab-arm64:checked    ~ .sub-tab-labels label[for="btab-arm64"] {
+    #btab-arm64:checked    ~ .sub-tab-labels label[for="btab-arm64"],
+    #btab-ppc64le:checked  ~ .sub-tab-labels label[for="btab-ppc64le"] {
       color: var(--text);
       border-bottom-color: var(--accent);
     }
@@ -292,7 +293,8 @@
     #ftab-rootless:checked ~ .sub-tab-panels #fpanel-rootless,
     #ftab-gui:checked      ~ .sub-tab-panels #fpanel-gui,
     #btab-amd64:checked    ~ .sub-tab-panels #bpanel-amd64,
-    #btab-arm64:checked    ~ .sub-tab-panels #bpanel-arm64 { display: block; }
+    #btab-arm64:checked    ~ .sub-tab-panels #bpanel-arm64,
+    #btab-ppc64le:checked  ~ .sub-tab-panels #bpanel-ppc64le { display: block; }
 
     .copr-status {
       display: flex;
@@ -733,18 +735,17 @@ sudo mv openlawsvpn-cli-linux-ppc64le /usr/local/bin/openlawsvpn-cli</code></pre
                 <input type="radio" name="fedora-tab" id="ftab-gui">
 
                 <div class="sub-tab-labels">
-                  <label for="ftab-root">CLI</label>
+                  <label for="ftab-root">CLI (config)</label>
                   <label for="ftab-rootless">CLI (relay)</label>
                   <label for="ftab-gui">GUI</label>
                 </div>
 
                 <div class="sub-tab-panels">
                   <div class="sub-tab-panel" id="fpanel-root">
-                    <pre><code>dnf copr enable vorona/openlawsvpn -y
-dnf install openlawsvpn-cli -y
+                    <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
+sudo dnf install openlawsvpn-cli -y
 sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></pre>
                     <p class="install-note">requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
-                    <p class="install-note">relay mode: openlawsvpn-cli -relay &lt;token&gt; -daemon</p>
                   </div>
                   <div class="sub-tab-panel" id="fpanel-rootless">
                     <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
@@ -756,7 +757,7 @@ sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></
                     <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
 sudo dnf install openlawsvpn-gui -y
 openlawsvpn-gui</code></pre>
-                    <p class="install-note">GTK4 + libadwaita desktop app — includes relay screen; pulls in openlawsvpn-cli automatically</p>
+                    <p class="install-note">GTK4 + libadwaita desktop app — includes relay screen; pulls in openlawsvpn-daemon automatically</p>
                   </div>
                 </div>
               </div>

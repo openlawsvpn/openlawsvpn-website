@@ -318,11 +318,56 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
-    @media (max-width: 480px) {
+    /* ── Demo callout ── */
+    .demo-callout {
+      margin-top: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 16px 20px;
+    }
+    .demo-callout h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .demo-callout p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .demo-callout p:last-child { margin-bottom: 0; }
+    .demo-callout code {
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+      color: var(--green);
+      background: var(--code-bg);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .demo-callout a { color: var(--blue); text-decoration: none; }
+    .demo-callout a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
       .hero { padding: 28px 0 20px; }
       .wordmark { font-size: 34px; }
       .hero-tagline { font-size: 17px; }
-      .tab-labels label { padding: 8px 12px; }
+      .hero-sub { font-size: 14px; }
+      .hero-badge { font-size: 12px; padding: 5px 10px; }
+      .hero-cta { gap: 8px; }
+      .btn { padding: 9px 16px; font-size: 14px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .relay-steps { grid-template-columns: 1fr; }
+      .tab-labels { overflow-x: auto; flex-wrap: nowrap; }
+      .tab-labels label { padding: 8px 12px; white-space: nowrap; font-size: 13px; }
+      .sub-tab-labels label { padding: 5px 10px; font-size: 12px; }
+      .tab-panel pre, .install-modes { padding: 14px; }
+      .tab-panel code { font-size: 12px; }
+      .relay-diagram svg { font-size: 10px; }
+      .demo-callout { padding: 14px 16px; }
     }
   </style>
 </head>
@@ -659,6 +704,13 @@
           <div class="num">4</div>
           <p><strong>Tunnel up.</strong> Agent executes Phase 2, VPN is established. CI build continues. App shows the agent as <em>connected</em> and can disconnect remotely at any time.</p>
         </div>
+      </div>
+
+      <div class="demo-callout">
+        <h3>Try it now — no account required</h3>
+        <p>Use the public demo token <code>default</code> to test the relay flow immediately:</p>
+        <p><code>openlawsvpn-cli -relay default -daemon</code></p>
+        <p>Demo limits: 10-minute session, 5 concurrent agents. Extended plans with longer sessions and higher limits are in progress — <a href="https://github.com/openlawsvpn/go-openlawsvpn/issues/1">vote for this feature there</a>.</p>
       </div>
 
     </div>

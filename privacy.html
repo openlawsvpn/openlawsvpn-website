@@ -5,140 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — openlawsvpn</title>
   <link rel="canonical" href="https://openlawsvpn.com/privacy.html">
-  <meta name="description" content="Privacy policy for the openlawsvpn Android app. No data collection, no telemetry, no tracking.">
+  <meta name="description" content="Privacy policy for the openlawsvpn Android app and VPN clients. No data collection, no telemetry, no tracking.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://openlawsvpn.com/privacy.html">
+  <meta property="og:title"       content="Privacy Policy — openlawsvpn">
+  <meta property="og:description" content="The openlawsvpn app collects no personal data, no analytics, no telemetry. VPN traffic goes directly to your own AWS endpoint.">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="robots"             content="noindex">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <link rel="stylesheet" href="/style.css">
   <style>
-    :root {
-      --bg:       #0d1117;
-      --surface:  #161b22;
-      --border:   #30363d;
-      --text:     #e6edf3;
-      --muted:    #8b949e;
-      --accent:   #f78166;
-      --green:    #3fb950;
-      --blue:     #58a6ff;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.7;
-    }
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Nav */
-    nav {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 14px;
-      transition: color 0.15s;
-    }
-    nav a:hover { color: var(--text); }
-    .nav-wordmark {
-      font-size: 18px;
-      font-weight: 600;
-    }
-    .nav-wordmark .pipe { color: var(--accent); font-weight: 300; }
-
-    /* Content */
-    .content {
-      padding: 56px 0 80px;
-    }
-
-    h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .effective {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text);
-      margin: 36px 0 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    p strong { color: var(--text); }
-
-    ul {
-      list-style: none;
-      margin-bottom: 12px;
-    }
-
-    ul li {
-      color: var(--muted);
-      padding: 4px 0 4px 20px;
-      position: relative;
-    }
-
-    ul li::before {
-      content: "·";
-      position: absolute;
-      left: 6px;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .callout {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 6px;
-      padding: 16px 20px;
-      margin: 24px 0;
-    }
-
-    .callout p {
-      margin: 0;
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-
-    /* Footer */
-    footer {
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--muted);
-    }
+    /* Privacy page uses narrower container */
+    .content .container { max-width: 720px; }
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="container">
-    <a href="/" class="nav-wordmark">open<span class="pipe">|</span>awsvpn</a>
+<nav class="site-nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-wordmark"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
+    <ul class="nav-links">
+      <li><a href="/client.html">Client</a></li>
+      <li><a href="/relay.html">Relay</a></li>
+      <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a></li>
+    </ul>
   </div>
 </nav>
 
@@ -206,7 +96,9 @@
   <div class="container">
     &copy; 2026 openlawsvpn contributors &nbsp;·&nbsp;
     <a href="/">Home</a> &nbsp;·&nbsp;
-    <a href="https://github.com/openlawsvpn/go-openlawsvpn">GitHub</a>
+    <a href="/client.html">Install</a> &nbsp;·&nbsp;
+    <a href="/relay.html">Relay</a> &nbsp;·&nbsp;
+    <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
   </div>
 </footer>
 

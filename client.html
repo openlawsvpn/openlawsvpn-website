@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install openlawsvpn — Linux CLI, GTK4 GUI, Android App</title>
+  <link rel="canonical" href="https://openlawsvpn.com/client.html">
+  <meta name="description" content="Install openlawsvpn on Linux (static binary or Fedora COPR RPM) or Android. Full SAML/SSO for AWS Client VPN. GTK4 libadwaita desktop GUI included. amd64, arm64, ppc64le.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://openlawsvpn.com/client.html">
+  <meta property="og:title"       content="Install openlawsvpn — Linux CLI, GTK4 GUI, Android App">
+  <meta property="og:description" content="Install openlawsvpn: static binary for any Linux distro, Fedora COPR RPM, Android APK, or build from source. Full SAML/SSO for AWS Client VPN.">
+  <meta name="twitter:card"       content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-wordmark"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
+      <ul class="nav-links">
+        <li><a href="/client.html" aria-current="page">Client</a></li>
+        <li><a href="/relay.html">Relay</a></li>
+        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════ PAGE HERO ═══════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Install openlawsvpn</h1>
+      <p>Linux CLI, GTK4 GUI, and Android app — open source, zero runtime dependencies.</p>
+      <div class="hero-cta" style="margin-top:20px">
+        <a class="btn btn-primary" href="#install">Install now ↓</a>
+        <a class="btn btn-secondary" href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">View on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PLATFORMS ═══════════ -->
+  <section class="features">
+    <div class="container">
+      <h2>Platforms</h2>
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <span class="icon">🐧</span>
+          <h3>Linux CLI</h3>
+          <p>Statically linked Go binary. No Mono, no Java, no Electron, no runtime. Works on any Linux distro. Available for amd64, arm64, and ppc64le.</p>
+          <span class="tag">working</span>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">🖥️</span>
+          <h3>GTK4 Desktop GUI</h3>
+          <p>libadwaita app for GNOME — profile importer, one-click connect, tray icon, and a built-in Relay screen. Ships as a Fedora COPR RPM.</p>
+          <span class="tag">working</span>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">📱</span>
+          <h3>Android App</h3>
+          <p>Pure Go VPN core via gomobile — no NDK, no JNI glue. SAML authentication in-app via Chrome Custom Tab. Includes the Relay screen.</p>
+          <span class="tag">working</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SAML / SSO ═══════════ -->
+  <section class="relay-section">
+    <div class="container">
+      <h2>Full SAML / SSO support</h2>
+      <p class="lede">
+        openlawsvpn implements the complete AWS Client VPN CRV1 challenge-response flow.
+        It works with any SAML 2.0 identity provider supported by AWS — Okta, Microsoft Entra ID (Azure AD),
+        Google Workspace, JumpCloud, and others. No custom IdP configuration required beyond what you already
+        have set up for AWS Client VPN.
+      </p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="icon">🔐</span>
+          <h3>Interactive (desktop / mobile)</h3>
+          <p>SAML login page opens in your system browser or Chrome Custom Tab. Credentials never touch openlawsvpn code — only your IdP and the AWS endpoint see them.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">⚙️</span>
+          <h3>Headless (CI/CD, servers)</h3>
+          <p>Use the Relay feature so a human approves auth from their phone while the headless agent establishes the tunnel. No secrets stored in the pipeline.</p>
+          <a class="btn btn-secondary" href="/relay.html" style="display:inline-block;margin-top:12px;font-size:13px;padding:6px 14px">Learn about Relay →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ GUI PROMO ═══════════ -->
+  <section class="relay-section" id="gui">
+    <div class="container">
+      <h2>GTK4 Desktop GUI</h2>
+      <p class="lede">
+        A clean libadwaita app that lives in your GNOME tray. Import a <code style="font-family:ui-monospace,monospace;font-size:13px;color:var(--green);background:var(--code-bg);padding:1px 5px;border-radius:3px">.ovpn</code> profile,
+        click Connect — SAML opens in your browser, the tunnel comes up, and the tray icon turns red.
+        The Relay screen lets you approve headless agent connections directly from your desktop.
+      </p>
+      <div class="relay-diagram">
+        <img src="promo-gui.svg" alt="openlawsvpn GTK4 GUI: profile list, connected state, and Relay approval screen">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ INSTALL ═══════════ -->
+  <section class="install" id="install">
+    <div class="container">
+      <h2>Install</h2>
+
+      <div class="tabs">
+        <input type="radio" name="install-tab" id="tab-binary" checked>
+        <input type="radio" name="install-tab" id="tab-fedora">
+        <input type="radio" name="install-tab" id="tab-android">
+        <input type="radio" name="install-tab" id="tab-source">
+
+        <div class="tab-labels">
+          <label for="tab-binary">Static binary</label>
+          <label for="tab-fedora">Fedora / RHEL</label>
+          <label for="tab-android">Android</label>
+          <label for="tab-source">From source</label>
+        </div>
+
+        <div class="tab-panels">
+
+          <div class="tab-panel" id="panel-binary">
+            <div class="install-modes">
+
+              <div class="sub-tabs">
+                <input type="radio" name="binary-tab" id="btab-amd64" checked>
+                <input type="radio" name="binary-tab" id="btab-arm64">
+                <input type="radio" name="binary-tab" id="btab-ppc64le">
+
+                <div class="sub-tab-labels">
+                  <label for="btab-amd64">amd64</label>
+                  <label for="btab-arm64">arm64</label>
+                  <label for="btab-ppc64le">ppc64le</label>
+                </div>
+
+                <div class="sub-tab-panels">
+                  <div class="sub-tab-panel" id="bpanel-amd64">
+                    <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-linux-amd64
+chmod +x openlawsvpn-cli-linux-amd64
+sudo mv openlawsvpn-cli-linux-amd64 /usr/local/bin/openlawsvpn-cli</code></pre>
+                  </div>
+                  <div class="sub-tab-panel" id="bpanel-arm64">
+                    <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-linux-arm64
+chmod +x openlawsvpn-cli-linux-arm64
+sudo mv openlawsvpn-cli-linux-arm64 /usr/local/bin/openlawsvpn-cli</code></pre>
+                  </div>
+                  <div class="sub-tab-panel" id="bpanel-ppc64le">
+                    <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-linux-ppc64le
+chmod +x openlawsvpn-cli-linux-ppc64le
+sudo mv openlawsvpn-cli-linux-ppc64le /usr/local/bin/openlawsvpn-cli</code></pre>
+                  </div>
+                </div>
+              </div>
+
+              <p class="install-note">statically linked, zero dependencies — requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
+              <p class="install-note">for the GUI or Fedora RPM — use the Fedora / RHEL tab</p>
+
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-fedora">
+            <div class="install-modes">
+
+              <div class="sub-tabs">
+                <input type="radio" name="fedora-tab" id="ftab-root" checked>
+                <input type="radio" name="fedora-tab" id="ftab-rootless">
+                <input type="radio" name="fedora-tab" id="ftab-gui">
+
+                <div class="sub-tab-labels">
+                  <label for="ftab-root">CLI (config)</label>
+                  <label for="ftab-rootless">CLI (relay)</label>
+                  <label for="ftab-gui">GUI</label>
+                </div>
+
+                <div class="sub-tab-panels">
+                  <div class="sub-tab-panel" id="fpanel-root">
+                    <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
+sudo dnf install openlawsvpn-cli -y
+sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></pre>
+                    <p class="install-note">requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
+                  </div>
+                  <div class="sub-tab-panel" id="fpanel-rootless">
+                    <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
+sudo dnf install openlawsvpn-cli -y
+sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></pre>
+                    <p class="install-note">relay mode: openlawsvpn-cli -relay &lt;token&gt; -daemon</p>
+                  </div>
+                  <div class="sub-tab-panel" id="fpanel-gui">
+                    <pre><code>sudo dnf copr enable vorona/openlawsvpn -y
+sudo dnf install openlawsvpn-gui -y
+openlawsvpn-gui</code></pre>
+                    <p class="install-note">GTK4 + libadwaita desktop app — includes relay screen; pulls in openlawsvpn-daemon automatically</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="copr-status">
+                <a href="https://copr.fedorainfracloud.org/coprs/vorona/openlawsvpn/package/openlawsvpn/" rel="noopener">
+                  <img src="https://copr.fedorainfracloud.org/coprs/vorona/openlawsvpn/package/openlawsvpn/status_image/last_build.png" alt="COPR build status">
+                </a>
+                <span>amd64 · arm64 · ppc64le · Fedora 43/44/rawhide</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-android">
+            <div class="install-modes">
+              <pre><code># APK artifacts require a free GitHub account to download
+# sign in at github.com, then open the link below</code></pre>
+              <p class="install-note"><a href="https://github.com/openlawsvpn/openlawsvpn-android-go/actions" rel="noopener">Latest CI build (GitHub Actions) →</a></p>
+              <p class="install-note">download the <code style="font-size:12px">apk</code> artifact from the latest passing run</p>
+              <p class="install-note">includes Relay screen — approve headless agent VPN auth from your phone</p>
+              <p class="install-note">iOS / macOS planned for a future release</p>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-source">
+            <pre><code>git clone https://github.com/openlawsvpn/go-openlawsvpn
+cd go-openlawsvpn
+make cli</code></pre>
+            <p class="install-note" style="padding:0 20px 16px">CGO_ENABLED=0 — fully static, no C toolchain required</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ RELAY CTA ═══════════ -->
+  <section class="cta-block">
+    <div class="container">
+      <h2>Using VPN in CI/CD or on headless servers?</h2>
+      <p>
+        The Relay feature lets CI/CD runners connect to AWS Client VPN without storing credentials.
+        A human approves the SAML flow from their phone with one tap.
+        A public demo token is available — no account required, sessions up to 10 minutes.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/relay.html">Learn about Relay →</a>
+        <a class="btn btn-secondary" href="/relay.html#demo">Try the demo ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      &copy; 2026 openlawsvpn contributors &nbsp;·&nbsp;
+      <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+      <a href="/">Home</a> &nbsp;·&nbsp;
+      <a href="/relay.html">Relay</a> &nbsp;·&nbsp;
+      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
+    </div>
+  </footer>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FT1WE72MX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0FT1WE72MX');
+  </script>
+  <script data-goatcounter="https://vorona.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

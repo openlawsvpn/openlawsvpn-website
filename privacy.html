@@ -36,10 +36,10 @@
   <div class="container">
 
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: May 4, 2026 &nbsp;·&nbsp; Applies to: all openlawsvpn apps and clients</p>
+    <p class="effective">Effective date: May 24, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn client (Android), openlawsvpn relay (Android), and all other openlawsvpn apps and clients</p>
 
     <div class="callout">
-      <p><strong>Short version:</strong> The openlawsvpn app does not collect, store, or transmit any personal data to openlawsvpn servers. In direct mode, your VPN traffic goes directly to your own AWS endpoint. Relay mode requires minimal data to transit the relay service by its nature — see section 3 for details.</p>
+      <p><strong>Short version:</strong> The openlawsvpn apps do not collect, store, or transmit any personal data to openlawsvpn servers. In direct mode, your VPN traffic goes directly to your own AWS endpoint. Relay mode requires minimal data to transit the relay service by its nature — see section 3 for details.</p>
     </div>
 
     <h2>1. What we collect</h2>
@@ -54,10 +54,11 @@
     <p>No data from any client is accessible to other apps or synchronized to any cloud service.</p>
 
     <h2>3. Data transmitted</h2>
-    <p>The only network traffic initiated by the app is:</p>
+    <p>The only network traffic initiated by the apps is:</p>
     <ul>
       <li><strong>VPN tunnel traffic</strong> — encrypted and routed directly to your organization's AWS Client VPN endpoint. openlawsvpn servers are never in the data path.</li>
       <li><strong>SAML authentication</strong> — your identity provider's login page opens in a system browser (a separate process). The app receives only the resulting SAML token; it never sees your credentials or the login page content.</li>
+      <li><strong>Demo endpoint (openlawsvpn client)</strong> — a publicly accessible demo VPN endpoint is available at <code>52.50.164.151</code> for app review and testing purposes. It accepts certificate-auth connections using the profile at <a href="/demo/demo-client.ovpn">demo/demo-client.ovpn</a>. No user data is stored on this endpoint.</li>
       <li><strong>Relay mode (optional)</strong> — if you use the relay feature, only the data required by its nature to deliver VPN auth to the remote agent transits the openlawsvpn relay service. This data is not stored beyond the duration of the session (60-second TTL). Direct connections never touch openlawsvpn servers.</li>
     </ul>
 

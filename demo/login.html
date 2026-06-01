@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>openlawsvpn — Demo Login</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .wordmark {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 28px;
+      display: block;
+    }
+    .wordmark .pipe { color: #f78166; }
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 0.85rem;
+      color: #8b949e;
+      margin-bottom: 28px;
+    }
+    .hint-box {
+      background: #1c2128;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: #8b949e;
+      line-height: 1.6;
+    }
+    .hint-box strong { color: #e6edf3; }
+    .hint-box code {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: ui-monospace, "Cascadia Code", monospace;
+      font-size: 0.85em;
+      color: #79c0ff;
+      user-select: all;
+    }
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #8b949e;
+      margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #e6edf3;
+      font-size: 0.95rem;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus { border-color: #58a6ff; }
+    input.error { border-color: #f85149; }
+    .error-msg {
+      color: #f85149;
+      font-size: 0.82rem;
+      margin-top: -12px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    button[type="submit"] {
+      width: 100%;
+      background: #238636;
+      border: 1px solid #2ea043;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button[type="submit"]:hover { background: #2ea043; }
+    button[type="submit"]:disabled {
+      background: #21262d;
+      border-color: #30363d;
+      color: #484f58;
+      cursor: not-allowed;
+    }
+    .status {
+      text-align: center;
+      font-size: 0.88rem;
+      color: #8b949e;
+      margin-top: 18px;
+      min-height: 20px;
+    }
+    .status.ok { color: #3fb950; }
+    .status.err { color: #f85149; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <span class="wordmark">open<span class="pipe">|</span>awsvpn <span style="color:#8b949e;font-weight:400;font-size:0.9rem">demo</span></span>
+  <h1>Sign in to Demo VPN</h1>
+  <p class="subtitle">This is a read-only demo environment for app review.</p>
+
+  <div class="hint-box">
+    Use the demo credentials below:<br>
+    <strong>Username:</strong> <code>reviewer</code><br>
+    <strong>Password:</strong> <code>Demo2026!</code>
+  </div>
+
+  <form id="loginForm" novalidate>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" autocomplete="username"
+           autocapitalize="none" autocorrect="off" spellcheck="false"
+           placeholder="reviewer">
+    <span class="error-msg" id="err-user">Enter the username shown above.</span>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autocomplete="current-password"
+           placeholder="••••••••">
+    <span class="error-msg" id="err-pass">Enter the password shown above.</span>
+
+    <button type="submit" id="submitBtn">Connect</button>
+  </form>
+  <p class="status" id="status"></p>
+</div>
+
+<script>
+  // Fixed demo token — must match what mockserver expects in Phase 2.
+  const DEMO_TOKEN = "DEMO2026OPENLAWS";
+  const DEMO_USER  = "reviewer";
+  const DEMO_PASS  = "Demo2026!";
+
+  // ACS server the app listens on (AWS hardcodes this, so does our mockserver).
+  const ACS_URL = "http://127.0.0.1:35001/";
+
+  const form       = document.getElementById("loginForm");
+  const userInput  = document.getElementById("username");
+  const passInput  = document.getElementById("password");
+  const submitBtn  = document.getElementById("submitBtn");
+  const statusEl   = document.getElementById("status");
+  const errUser    = document.getElementById("err-user");
+  const errPass    = document.getElementById("err-pass");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Clear previous errors.
+    [userInput, passInput].forEach(i => i.classList.remove("error"));
+    [errUser, errPass].forEach(el => el.style.display = "none");
+    statusEl.className = "status";
+    statusEl.textContent = "";
+
+    const user = userInput.value.trim();
+    const pass = passInput.value;
+    let valid = true;
+
+    if (user !== DEMO_USER) {
+      userInput.classList.add("error");
+      errUser.style.display = "block";
+      valid = false;
+    }
+    if (pass !== DEMO_PASS) {
+      passInput.classList.add("error");
+      errPass.style.display = "block";
+      valid = false;
+    }
+    if (!valid) return;
+
+    submitBtn.disabled = true;
+    statusEl.textContent = "Sending credentials to app…";
+
+    // Build a form-urlencoded body matching what a real SAML IdP would send.
+    const body = "SAMLResponse=" + encodeURIComponent(DEMO_TOKEN);
+
+    try {
+      await fetch(ACS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+        mode: "no-cors",   // loopback — CORS not enforced by the app's ACS server
+      });
+      statusEl.className = "status ok";
+      statusEl.textContent = "✓ Credentials accepted — returning to app…";
+    } catch {
+      // fetch with no-cors resolves even on network error in some browsers,
+      // but guard anyway.
+      statusEl.className = "status ok";
+      statusEl.textContent = "✓ Sent — returning to app…";
+    }
+  });
+</script>
+</body>
+</html>

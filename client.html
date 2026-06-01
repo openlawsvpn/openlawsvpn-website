@@ -56,7 +56,7 @@
         <div class="feature-card">
           <span class="icon">🖥️</span>
           <h3>GTK4 Desktop GUI</h3>
-          <p>libadwaita app for GNOME — profile importer, one-click connect, tray icon, and a built-in Relay screen. Ships as a Fedora COPR RPM.</p>
+          <p>libadwaita app for GNOME — profile importer, one-click connect, tray icon, and a built-in Relay screen. Ships as a Fedora COPR RPM. Native tray requires <code style="font-family:ui-monospace,monospace;font-size:12px;color:var(--green);background:var(--code-bg);padding:1px 4px;border-radius:3px">gnome-shell-extension-appindicator</code>.</p>
           <span class="tag">working</span>
         </div>
 
@@ -105,9 +105,13 @@
         A clean libadwaita app that lives in your GNOME tray. Import a <code style="font-family:ui-monospace,monospace;font-size:13px;color:var(--green);background:var(--code-bg);padding:1px 5px;border-radius:3px">.ovpn</code> profile,
         click Connect — SAML opens in your browser, the tunnel comes up, and the tray icon turns red.
         The Relay screen lets you approve headless agent connections directly from your desktop.
+        On GNOME, install <code style="font-family:ui-monospace,monospace;font-size:13px;color:var(--green);background:var(--code-bg);padding:1px 5px;border-radius:3px">gnome-shell-extension-appindicator</code> to enable the native system tray icon.
       </p>
       <div class="relay-diagram">
         <img src="promo-gui.svg" alt="openlawsvpn GTK4 GUI: profile list, connected state, and Relay approval screen">
+      </div>
+      <div class="relay-diagram" style="margin-top:24px">
+        <img src="promo-tray.svg" alt="openlawsvpn GNOME system tray: idle (orange heart) and connected (red heart) states with AppIndicator menu">
       </div>
     </div>
   </section>
@@ -206,6 +210,7 @@ sudo openlawsvpn-cli --config ~/Downloads/downloaded-client-config.ovpn</code></
 sudo dnf install openlawsvpn-gui -y
 openlawsvpn-gui</code></pre>
                     <p class="install-note">GTK4 + libadwaita desktop app — includes relay screen; pulls in openlawsvpn-daemon automatically</p>
+                    <p class="install-note">for the system tray icon on GNOME: <code style="font-size:12px">sudo dnf install gnome-shell-extension-appindicator</code></p>
                   </div>
                 </div>
               </div>

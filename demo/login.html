@@ -153,26 +153,62 @@
 </div>
 
 <script>
-  // Fixed demo token — must match what mockserver expects in Phase 2.
   const DEMO_TOKEN = "DEMO2026OPENLAWS";
   const DEMO_USER  = "reviewer";
   const DEMO_PASS  = "Demo2026!";
+  const ACS_URL    = "http://127.0.0.1:35001/";
+  const COOKIE_KEY = "demo_auth";
+  const COOKIE_TTL = 30; // days
 
-  // ACS server the app listens on (AWS hardcodes this, so does our mockserver).
-  const ACS_URL = "http://127.0.0.1:35001/";
+  const form      = document.getElementById("loginForm");
+  const userInput = document.getElementById("username");
+  const passInput = document.getElementById("password");
+  const submitBtn = document.getElementById("submitBtn");
+  const statusEl  = document.getElementById("status");
+  const errUser   = document.getElementById("err-user");
+  const errPass   = document.getElementById("err-pass");
 
-  const form       = document.getElementById("loginForm");
-  const userInput  = document.getElementById("username");
-  const passInput  = document.getElementById("password");
-  const submitBtn  = document.getElementById("submitBtn");
-  const statusEl   = document.getElementById("status");
-  const errUser    = document.getElementById("err-user");
-  const errPass    = document.getElementById("err-pass");
+  function setCookie() {
+    const exp = new Date();
+    exp.setDate(exp.getDate() + COOKIE_TTL);
+    document.cookie = COOKIE_KEY + "=1; expires=" + exp.toUTCString() + "; path=/; SameSite=Lax";
+  }
+
+  function hasCookie() {
+    return document.cookie.split(";").some(c => c.trim().startsWith(COOKIE_KEY + "="));
+  }
+
+  async function sendToken() {
+    const body = "SAMLResponse=" + encodeURIComponent(DEMO_TOKEN);
+    try {
+      await fetch(ACS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+        mode: "no-cors",
+      });
+    } catch (_) {}
+  }
+
+  // If already authenticated via cookie, skip the form entirely.
+  if (hasCookie()) {
+    form.style.display = "none";
+    document.querySelector(".hint-box").style.display = "none";
+    statusEl.className = "status ok";
+    statusEl.textContent = "✓ Reconnecting…";
+    sendToken().then(() => {
+      statusEl.textContent = "✓ Credentials sent — returning to app…";
+      setTimeout(() => window.close(), 1200);
+    });
+  } else {
+    // Pre-fill from cookie hint (first-time: show form normally).
+    userInput.value = "";
+    passInput.value = "";
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Clear previous errors.
     [userInput, passInput].forEach(i => i.classList.remove("error"));
     [errUser, errPass].forEach(el => el.style.display = "none");
     statusEl.className = "status";
@@ -197,24 +233,12 @@
     submitBtn.disabled = true;
     statusEl.textContent = "Sending credentials to app…";
 
-    // Build a form-urlencoded body matching what a real SAML IdP would send.
-    const body = "SAMLResponse=" + encodeURIComponent(DEMO_TOKEN);
+    setCookie();
+    await sendToken();
 
-    try {
-      await fetch(ACS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
-        mode: "no-cors",   // loopback — CORS not enforced by the app's ACS server
-      });
-      statusEl.className = "status ok";
-      statusEl.textContent = "✓ Credentials accepted — returning to app…";
-    } catch {
-      // fetch with no-cors resolves even on network error in some browsers,
-      // but guard anyway.
-      statusEl.className = "status ok";
-      statusEl.textContent = "✓ Sent — returning to app…";
-    }
+    statusEl.className = "status ok";
+    statusEl.textContent = "✓ Credentials accepted — closing…";
+    setTimeout(() => window.close(), 1200);
   });
 </script>
 </body>

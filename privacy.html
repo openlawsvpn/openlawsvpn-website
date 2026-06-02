@@ -14,26 +14,56 @@
   <meta name="robots"             content="noindex">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
   <link rel="stylesheet" href="/style.css">
-  <style>
-    /* Privacy page uses narrower container */
-    .content .container { max-width: 720px; }
-  </style>
 </head>
 <body>
 
-<nav class="site-nav">
-  <div class="container nav-inner">
-    <a href="/" class="nav-wordmark"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
-    <ul class="nav-links">
-      <li><a href="/client.html">Client</a></li>
-      <li><a href="/relay.html">Relay</a></li>
-      <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a></li>
-    </ul>
-  </div>
-</nav>
+<button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
 
-<main class="content">
-  <div class="container">
+<div class="docs-layout">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="/"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Getting started</span>
+      <ul class="sidebar-nav">
+        <li><a href="/">Overview</a></li>
+        <li><a href="/client.html">Client install</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Relay</span>
+      <ul class="sidebar-nav">
+        <li><a href="/relay.html">How it works</a></li>
+        <li><a href="/relay.html#demo">Try the demo</a></li>
+        <li><a href="/relay.html#ci">CI/CD setup</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Apps</span>
+      <ul class="sidebar-nav">
+        <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
+        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/privacy.html" style="color:var(--muted)">Privacy</a> &nbsp;·&nbsp;
+      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
+    </div>
+  </nav>
+
+  <main class="docs-main content">
+
+    <div class="breadcrumb">
+      <a href="/">openlawsvpn</a>
+      <span>›</span>
+      <span>Privacy Policy</span>
+    </div>
 
     <h1>Privacy Policy</h1>
     <p class="effective">Effective date: May 24, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn client (Android), openlawsvpn relay (Android), and all other openlawsvpn apps and clients</p>
@@ -90,18 +120,25 @@
     <h2>9. Contact</h2>
     <p>Questions about this policy: <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a></p>
 
-  </div>
-</main>
+  </main>
+</div>
 
-<footer>
-  <div class="container">
-    &copy; 2026 openlawsvpn contributors &nbsp;·&nbsp;
-    <a href="/">Home</a> &nbsp;·&nbsp;
-    <a href="/client.html">Install</a> &nbsp;·&nbsp;
-    <a href="/relay.html">Relay</a> &nbsp;·&nbsp;
-    <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
-  </div>
+<footer class="docs-footer">
+  <span>© 2026 openlawsvpn contributors</span>
+  <a href="/">Home</a>
+  <a href="/client.html">Client</a>
+  <a href="/relay.html">Relay</a>
+  <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
 </footer>
 
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggle)
+      sidebar.classList.remove('open');
+  });
+</script>
 </body>
 </html>

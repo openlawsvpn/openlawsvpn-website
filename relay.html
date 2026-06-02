@@ -20,84 +20,110 @@
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "How openlawsvpn Relay works — headless VPN auth for CI/CD",
-    "description": "A screencast showing how a CI/CD runner authenticates to AWS Client VPN using openlawsvpn Relay, while a human approves the SAML flow from the Android app. The tunnel comes up without any credentials stored in the pipeline.",
+    "description": "A screencast showing how a CI/CD runner authenticates to AWS Client VPN using openlawsvpn Relay, while a human approves the SAML flow from the Android app.",
     "thumbnailUrl": "https://openlawsvpn.com/assets/how-it-works-poster.jpg",
     "contentUrl": "https://openlawsvpn.com/assets/how-it-works.mp4",
     "uploadDate": "2026-05-06",
     "duration": "PT1M18S",
-    "publisher": {
-      "@type": "Organization",
-      "name": "openlawsvpn",
-      "url": "https://openlawsvpn.com"
-    }
+    "publisher": { "@type": "Organization", "name": "openlawsvpn", "url": "https://openlawsvpn.com" }
   }
   </script>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="/" class="nav-wordmark"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
-      <ul class="nav-links">
-        <li><a href="/client.html">Client</a></li>
-        <li><a href="/relay.html" aria-current="page">Relay</a></li>
-        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a></li>
+<button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+<div class="docs-layout">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="/"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Getting started</span>
+      <ul class="sidebar-nav">
+        <li><a href="/">Overview</a></li>
+        <li><a href="/client.html">Client install</a></li>
       </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Relay</span>
+      <ul class="sidebar-nav">
+        <li><a href="/relay.html" class="active">How it works</a></li>
+        <li><a href="/relay.html#demo">Try the demo</a></li>
+        <li><a href="/relay.html#ci">CI/CD setup</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Apps</span>
+      <ul class="sidebar-nav">
+        <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
+        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp;
+      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
     </div>
   </nav>
 
-  <!-- ═══════════ PAGE HERO ═══════════ -->
-  <section class="page-hero">
-    <div class="container">
-      <h1>Relay — Headless VPN auth for CI/CD and servers</h1>
-      <p>AWS Client VPN requires a browser for SAML authentication. That's fine on a developer laptop — impossible on a CI runner or a remote VM behind NAT.</p>
-      <div class="hero-cta" style="margin-top:20px">
-        <a class="btn btn-primary" href="#demo">Try the demo — no account required</a>
+  <main class="docs-main">
+
+    <div class="breadcrumb">
+      <a href="/">openlawsvpn</a>
+      <span>›</span>
+      <span>Relay</span>
+    </div>
+
+    <div class="page-header">
+      <h1>Relay — Headless VPN auth</h1>
+      <p class="lead">AWS Client VPN requires a browser for SAML. That's fine on a laptop — impossible on a CI runner. Relay bridges the gap.</p>
+      <div class="btn-cta">
+        <a class="btn btn-primary btn-lg" href="#demo">Try the demo — no account required</a>
         <a class="btn btn-secondary" href="#how-it-works">How it works ↓</a>
-        <a class="btn btn-secondary" href="/client.html">Install the client →</a>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ THE PROBLEM ═══════════ -->
-  <section class="relay-section">
-    <div class="container">
+    <!-- ── Problem ── -->
+    <div class="doc-section">
       <h2>The problem with SAML in headless environments</h2>
-      <p class="lede">
-        AWS Client VPN uses the CRV1 SAML challenge-response protocol. Phase 1 returns a URL that must be
-        opened in a browser — the user logs in via their IdP (Okta, Azure AD, etc.) and the resulting
-        SAMLResponse completes Phase 2 to bring up the tunnel.
+      <p>
+        AWS Client VPN uses the CRV1 challenge-response protocol. Phase 1 returns a URL that must be
+        opened in a browser — the user authenticates via their IdP and the resulting SAMLResponse
+        completes Phase 2 to bring up the tunnel.
       </p>
       <div class="feature-grid">
         <div class="feature-card">
           <span class="icon">🚫</span>
-          <h3>CI/CD runners have no browser</h3>
-          <p>GitHub Actions, GitLab CI, Jenkins, and most cloud runners are headless Ubuntu containers. There is no display, no browser, no way to complete the SAML flow interactively.</p>
+          <h3>CI runners have no browser</h3>
+          <p>GitHub Actions, GitLab CI, Jenkins — headless containers. No display, no way to complete the SAML flow interactively.</p>
         </div>
         <div class="feature-card">
           <span class="icon">🔑</span>
           <h3>Storing credentials is an anti-pattern</h3>
-          <p>Injecting AWS credentials or SAML tokens as CI secrets couples your pipeline to credentials that expire, rotate, and leak. Every rotation breaks builds.</p>
+          <p>Injecting SAML tokens as CI secrets couples your pipeline to credentials that expire and rotate. Every rotation breaks builds.</p>
         </div>
         <div class="feature-card">
           <span class="icon">🔧</span>
           <h3>Existing workarounds fail at scale</h3>
-          <p>Pre-generated SAML tokens expire in minutes. Spinning up a full desktop VM just for VPN auth wastes money and adds minutes to every build.</p>
+          <p>Pre-generated tokens expire in minutes. Spinning up a full desktop VM just for VPN auth wastes money and adds minutes to every build.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ HOW IT WORKS ═══════════ -->
-  <section class="relay-section" id="how-it-works">
-    <div class="container">
+    <!-- ── How it works ── -->
+    <div class="doc-section" id="how-it-works">
       <h2>How Relay works</h2>
-      <p class="lede">
+      <p>
         The relay is a lightweight broker between the headless agent (CI runner) and the human operator
-        (Android or desktop app). No inbound ports required. No secrets stored anywhere in the pipeline.
+        (desktop or Android client). No inbound ports required. No secrets stored anywhere in the pipeline.
       </p>
 
-      <div class="relay-diagram">
+      <div class="diagram">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560"
              font-family="'SF Mono','Fira Code','Consolas',ui-monospace,monospace">
           <defs>
@@ -118,19 +144,16 @@
               <polygon points="0 0,8 3,0 6" fill="#58a6ff"/>
             </marker>
           </defs>
-
           <rect width="1200" height="560" fill="#0d1117"/>
           <g stroke="#161b22" stroke-width="1" opacity="0.7">
             <line x1="0" y1="130" x2="1200" y2="130"/><line x1="0" y1="260" x2="1200" y2="260"/>
             <line x1="0" y1="390" x2="1200" y2="390"/><line x1="300" y1="0" x2="300" y2="560"/>
             <line x1="600" y1="0" x2="600" y2="560"/><line x1="900" y1="0" x2="900" y2="560"/>
           </g>
-
           <text x="32" y="44" font-size="26" font-weight="700" letter-spacing="-1" font-family="system-ui,-apple-system,sans-serif">
             <tspan fill="#e6edf3">open</tspan><tspan fill="#f78166" font-weight="300">|</tspan><tspan fill="#8b949e">aws</tspan><tspan fill="#e6edf3">vpn</tspan>
           </text>
           <text x="32" y="62" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">relay — headless SAML auth for CI/CD</text>
-
           <rect x="32" y="84" width="400" height="388" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
           <rect x="32" y="84" width="400" height="32" rx="8" fill="#1f2428"/>
           <rect x="32" y="104" width="400" height="12" fill="#1f2428"/>
@@ -138,7 +161,6 @@
           <circle cx="68"  cy="100" r="5" fill="#fbbf24"/>
           <circle cx="84"  cy="100" r="5" fill="#3fb950"/>
           <text x="232" y="104" text-anchor="middle" font-size="11" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">VPN Integration · GitHub Actions</text>
-
           <g font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">
             <text x="52" y="142" fill="#3fb950">✓</text><text x="68" y="142" fill="#c9d1d9">Set up openlawsvpn</text>
             <text x="52" y="163" fill="#3fb950">✓</text><text x="68" y="163" fill="#c9d1d9">Checkout</text>
@@ -146,7 +168,6 @@
             <text x="52" y="186" fill="#f78166">▶</text>
             <text x="68" y="186" fill="#e6edf3" font-weight="700">Start relay agent</text>
           </g>
-
           <g font-size="12" font-family="'SF Mono','Fira Code',ui-monospace,monospace">
             <text x="64" y="210" fill="#8b949e">$</text>
             <text x="76" y="210" fill="#c9d1d9">openlawsvpn-cli \</text>
@@ -154,33 +175,26 @@
             <text x="76" y="246" fill="#c9d1d9">  -pidfile /tmp/vpn.pid</text>
             <text x="76" y="268" fill="#58a6ff">waiting for app to connect...</text>
           </g>
-
           <line x1="44" y1="282" x2="420" y2="282" stroke="#30363d" stroke-width="1"/>
           <g font-size="12" fill="#6e7681" font-family="system-ui,-apple-system,sans-serif">
             <text x="52" y="300">○</text><text x="68" y="300">Check internal service health</text>
             <text x="52" y="320">○</text><text x="68" y="320">Disconnect VPN</text>
             <text x="52" y="340">○</text><text x="68" y="340">Upload relay agent log</text>
           </g>
-
           <rect x="44" y="356" width="380" height="50" rx="6" fill="#0d3321" stroke="#3fb950" stroke-width="1"/>
           <text x="62" y="374" font-size="11" fill="#3fb950" font-weight="700" font-family="system-ui,-apple-system,sans-serif">TUNNEL UP</text>
           <text x="62" y="390" font-size="11" fill="#3fb950" font-family="'SF Mono','Fira Code',ui-monospace,monospace">tun=172.16.77.1   pid=12483</text>
           <text x="62" y="406" font-size="11" fill="#56d364" font-family="system-ui,-apple-system,sans-serif">daemon started · zero SAML secrets in CI</text>
-
           <rect x="524" y="194" width="112" height="56" rx="8" fill="#161b22" stroke="#7c3aed" stroke-width="1.5"/>
           <text x="580" y="218" text-anchor="middle" font-size="12" fill="#a78bfa" font-weight="700" font-family="system-ui,-apple-system,sans-serif">Relay</text>
           <text x="580" y="234" text-anchor="middle" font-size="10" fill="#7c3aed" font-family="system-ui,-apple-system,sans-serif">APIGW · DDB · SQS</text>
           <text x="580" y="246" text-anchor="middle" font-size="10" fill="#7c3aed" font-family="system-ui,-apple-system,sans-serif">Lambda</text>
-
           <line x1="432" y1="232" x2="522" y2="222" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-blue)"/>
           <text x="477" y="215" text-anchor="middle" font-size="10" fill="#58a6ff" font-family="system-ui,-apple-system,sans-serif">WS register</text>
-
           <line x1="522" y1="240" x2="432" y2="256" stroke="#f78166" stroke-width="1.5" marker-end="url(#arr-accent)"/>
           <text x="477" y="266" text-anchor="middle" font-size="10" fill="#f78166" font-family="system-ui,-apple-system,sans-serif">phase2 push</text>
-
           <line x1="692" y1="222" x2="638" y2="222" stroke="#0891b2" stroke-width="1.5" marker-end="url(#arr-muted)"/>
           <text x="665" y="215" text-anchor="middle" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">POST /execute</text>
-
           <rect x="692" y="84" width="196" height="348" rx="16" fill="#1c1c1e" stroke="#30363d" stroke-width="1.5"/>
           <rect x="692" y="84" width="196" height="24" rx="16" fill="#1c1c1e"/>
           <rect x="692" y="96" width="196" height="12" fill="#1c1c1e"/>
@@ -212,21 +226,15 @@
           <rect x="764" y="423" width="52" height="4" rx="2" fill="#30363d"/>
           <text x="790" y="452" text-anchor="middle" font-size="11" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">openlawsvpn Android</text>
           <text x="790" y="468" text-anchor="middle" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,sans-serif">one tap · zero secrets in CI</text>
-
           <rect x="940" y="188" width="220" height="68" rx="8" fill="#161b22" stroke="#f97316" stroke-width="1.5"/>
           <text x="1050" y="214" text-anchor="middle" font-size="13" fill="#fb923c" font-weight="700" font-family="system-ui,-apple-system,sans-serif">AWS Client VPN</text>
           <text x="1050" y="232" text-anchor="middle" font-size="10" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">vpn.us-east-1.amazonaws.com</text>
           <text x="1050" y="248" text-anchor="middle" font-size="10" fill="#6e7681" font-family="system-ui,-apple-system,sans-serif">your existing infra — nothing changes</text>
-
-          <!-- Android → AWS VPN: Phase 1 (SAML challenge request) -->
           <line x1="888" y1="210" x2="938" y2="210" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr-blue)"/>
           <text x="913" y="203" text-anchor="middle" font-size="10" fill="#58a6ff" font-family="system-ui,-apple-system,sans-serif">Phase 1</text>
-
-          <!-- Phase 2 arrow: routes below the phone to avoid overlap -->
           <path d="M 432,406 C 432,500 938,500 938,258" stroke="#3fb950" stroke-width="2.5" stroke-dasharray="8,4" fill="none" marker-end="url(#arr-grn)" filter="url(#glow)"/>
           <text x="690" y="500" text-anchor="middle" font-size="13" fill="#3fb950" font-weight="700" font-family="system-ui,-apple-system,sans-serif">Phase 2 · tunnel up ✓</text>
           <text x="690" y="516" text-anchor="middle" font-size="10" fill="#56d364" font-family="system-ui,-apple-system,sans-serif">CRV1::state_id::SAMLResponse</text>
-
           <line x1="0" y1="534" x2="1200" y2="534" stroke="#30363d" stroke-width="1"/>
           <text x="32" y="552" font-size="12" fill="#8b949e" font-family="system-ui,-apple-system,sans-serif">
             <tspan fill="#e6edf3" font-weight="600">SAML relay</tspan>
@@ -235,43 +243,46 @@
         </svg>
       </div>
 
-      <div class="relay-steps">
-        <div class="relay-step">
-          <div class="num">1</div>
-          <p><strong>Agent registers.</strong> CI runner starts <code style="font-size:12px;color:var(--green);font-family:ui-monospace,monospace">openlawsvpn-cli -relay &lt;token&gt; -daemon</code> and connects a WebSocket to the relay. No inbound port needed.</p>
+      <div class="steps" style="margin-top:28px">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Agent registers</h3>
+            <p>CI runner starts <code>openlawsvpn-cli -relay &lt;token&gt; -daemon</code> and connects a WebSocket to the relay. No inbound port needed.</p>
+          </div>
         </div>
-        <div class="relay-step">
-          <div class="num">2</div>
-          <p><strong>App authenticates.</strong> Developer opens the Android or desktop app, sees the agent listed as <em>standby</em>, taps Connect. The app runs Phase 1 + full SAML browser flow.</p>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>App authenticates</h3>
+            <p>Developer opens the Android or desktop app, sees the agent listed as <em>standby</em>, taps Connect. The app runs Phase 1 + full SAML browser flow.</p>
+          </div>
         </div>
-        <div class="relay-step">
-          <div class="num">3</div>
-          <p><strong>Relay delivers credentials.</strong> App sends the completed SAMLResponse to the relay via HTTPS. Relay pushes it to the waiting agent over the WebSocket.</p>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Relay delivers credentials</h3>
+            <p>App sends the completed SAMLResponse to the relay via HTTPS. Relay pushes it to the waiting agent over the WebSocket.</p>
+          </div>
         </div>
-        <div class="relay-step">
-          <div class="num">4</div>
-          <p><strong>Tunnel up.</strong> Agent executes Phase 2, VPN is established. CI build continues. App shows the agent as <em>connected</em> and can disconnect remotely at any time.</p>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Tunnel up</h3>
+            <p>Agent executes Phase 2, VPN is established. CI build continues. App shows the agent as <em>connected</em> and can disconnect remotely at any time.</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ VIDEO ═══════════ -->
-  <section class="relay-section" id="how-it-works-video">
-    <div class="container">
+    <!-- ── Video ── -->
+    <div class="doc-section">
       <h2>See it in action</h2>
-      <p class="lede">
-        A real screencast: a GitHub Actions workflow starts the relay agent, the Android app approves the
-        SAML flow, and the tunnel comes up — with zero credentials stored in the pipeline.
-      </p>
+      <p>A real screencast: a GitHub Actions workflow starts the relay agent, the Android app approves the SAML flow, and the tunnel comes up — with zero credentials stored in the pipeline.</p>
 
       <div class="video-wrap">
-        <video
-          src="assets/how-it-works.mp4"
-          poster="assets/how-it-works-poster.jpg"
-          controls
-          preload="none"
-          width="100%">
+        <video src="assets/how-it-works.mp4" poster="assets/how-it-works-poster.jpg"
+               controls preload="none" width="100%">
           Your browser does not support HTML5 video.
           <a href="assets/how-it-works.mp4">Download the screencast (MP4, 5 MB)</a>
         </video>
@@ -281,38 +292,36 @@
         <h3>What the screencast shows</h3>
         <ol>
           <li>A GitHub Actions <strong>VPN Integration</strong> workflow is triggered manually. The runner is a headless Ubuntu container with no display.</li>
-          <li>The workflow step <strong>Start relay agent</strong> runs <code>openlawsvpn-cli -relay $RELAY_TOKEN -daemon -pidfile /tmp/vpn.pid</code>. The step blocks, waiting for an operator to approve auth from the app.</li>
-          <li>On an Android phone, the openlawsvpn app's <strong>Relay</strong> screen shows the runner listed as <em>standby</em>. The operator taps <strong>Connect</strong>.</li>
-          <li>The app runs the Phase 1 SAML browser flow. The AWS-hosted login page opens in Chrome Custom Tab. The user authenticates with their SSO credentials.</li>
-          <li>The app posts the completed SAMLResponse to the relay backend. The relay pushes it to the waiting agent over WebSocket.</li>
-          <li>The CI step exits 0 — <code>TUNNEL UP · tun=172.16.77.1 · daemon started (pid 12483)</code>. The pipeline continues to the next step.</li>
-          <li>Subsequent steps that require access to internal services over the VPN succeed.</li>
-          <li>On cleanup, the app shows the agent as <em>connected</em> and the operator can disconnect it remotely with one tap.</li>
+          <li>The step <strong>Start relay agent</strong> runs <code>openlawsvpn-cli -relay $RELAY_TOKEN -daemon -pidfile /tmp/vpn.pid</code>. It blocks, waiting for an operator to approve auth.</li>
+          <li>On an Android phone, the openlawsvpn app's <strong>Relay</strong> screen shows the runner as <em>standby</em>. The operator taps <strong>Connect</strong>.</li>
+          <li>The app runs the Phase 1 SAML browser flow in Chrome Custom Tab. The user authenticates with their SSO credentials.</li>
+          <li>The app posts the completed SAMLResponse to the relay. Relay pushes it to the waiting agent over WebSocket.</li>
+          <li>The CI step exits 0 — <code>TUNNEL UP · tun=172.16.77.1 · daemon started (pid 12483)</code>. The pipeline continues.</li>
+          <li>Subsequent steps requiring access to internal services over the VPN succeed.</li>
+          <li>On cleanup, the app shows the agent as <em>connected</em> and the operator can disconnect it remotely.</li>
         </ol>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ DEMO ═══════════ -->
-  <section class="relay-section" id="demo">
-    <div class="container">
+    <!-- ── Demo ── -->
+    <div class="doc-section" id="demo">
       <h2>Try it now — no account required</h2>
-      <p class="lede">
-        The public demo token lets you test the full relay flow immediately against the live relay backend.
-        No registration, no credit card.
-      </p>
+      <p>The public demo token lets you test the full relay flow immediately against the live relay backend. No registration, no credit card.</p>
 
-      <div class="demo-callout">
+      <div class="demo-box">
         <h3>Demo token: <code>default</code></h3>
         <p>Run on any Linux host (or CI runner) with openlawsvpn-cli installed:</p>
         <p><code>openlawsvpn-cli -relay default -daemon</code></p>
         <p>Then open the Android app → Relay tab → enter token <code>default</code> → tap Save &amp; Refresh. Your agent appears in the list. Tap Connect to complete the SAML flow.</p>
         <p><strong>Demo limits:</strong> 10-minute session maximum · 5 concurrent agents · shared public namespace. For longer sessions or private organisation tokens, <a href="https://github.com/openlawsvpn/go-openlawsvpn/issues/1" rel="noopener">vote for extended plans on GitHub</a>.</p>
       </div>
+    </div>
 
-      <h3 style="font-size:16px;font-weight:600;margin-top:32px;margin-bottom:12px">GitHub Actions example</h3>
-      <div style="background:var(--code-bg);border:1px solid var(--border);border-radius:6px;padding:20px;overflow-x:auto">
-        <pre style="margin:0"><code style="font-family:ui-monospace,monospace;font-size:13px;color:var(--text)">- name: Start relay agent
+    <!-- ── CI/CD setup ── -->
+    <div class="doc-section" id="ci">
+      <h2>GitHub Actions example</h2>
+
+      <pre class="code-block">- name: Start relay agent
   env:
     RELAY_TOKEN: ${{ secrets.RELAY_TOKEN }}
   run: |
@@ -328,34 +337,32 @@
 - name: Disconnect VPN
   if: always()
   run: |
-    kill "$(cat /tmp/vpn.pid)" || true</code></pre>
-      </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:10px">
-        Store your organisation relay token as a repository secret <code style="font-family:ui-monospace,monospace;font-size:12px;color:var(--green);background:var(--code-bg);padding:1px 4px;border-radius:3px">RELAY_TOKEN</code>.
+    kill "$(cat /tmp/vpn.pid)" || true</pre>
+
+      <p style="font-size:13px;color:var(--muted);margin-top:4px">
+        Store your relay token as a repository secret <code>RELAY_TOKEN</code>.
         No VPN credentials, no AWS keys, no SAML tokens in CI.
       </p>
     </div>
-  </section>
 
-  <!-- ═══════════ USE CASES ═══════════ -->
-  <section class="relay-section">
-    <div class="container">
+    <!-- ── Use cases ── -->
+    <div class="doc-section">
       <h2>Use cases</h2>
       <div class="feature-grid">
         <div class="feature-card">
           <span class="icon">🔄</span>
           <h3>GitHub Actions / GitLab CI</h3>
-          <p>Integration tests, database migrations, internal API calls — any CI step that needs your private VPC. The relay agent starts as a step; a team member approves from their phone before the run begins.</p>
+          <p>Integration tests, database migrations, internal API calls — any CI step that needs your private VPC. A team member approves from their phone before the run begins.</p>
         </div>
         <div class="feature-card">
           <span class="icon">☁️</span>
           <h3>Remote development VMs</h3>
-          <p>Cloud dev boxes and jump hosts behind NAT can't open a browser. Relay lets you bring up the VPN tunnel on any remote machine with a single CLI command.</p>
+          <p>Cloud dev boxes and jump hosts behind NAT can't open a browser. Relay lets you bring up the tunnel on any remote machine with a single CLI command.</p>
         </div>
         <div class="feature-card">
           <span class="icon">☸️</span>
           <h3>Kubernetes init containers</h3>
-          <p>Run the relay agent as a VPN init container in your pod spec. The tunnel is ready before your application container starts — no sidecar complexity.</p>
+          <p>Run the relay agent as a VPN init container in your pod spec. The tunnel is ready before your application container starts.</p>
         </div>
         <div class="feature-card">
           <span class="icon">🌐</span>
@@ -364,39 +371,39 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ FINAL CTA ═══════════ -->
-  <section class="cta-block">
-    <div class="container">
+    <div class="doc-section">
       <h2>Ready to try it?</h2>
-      <p>Install the client, run with <code style="font-family:ui-monospace,monospace;font-size:13px;color:var(--green);background:var(--code-bg);padding:1px 5px;border-radius:3px">-relay default</code> to test immediately — no account required.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="/client.html">Install the client →</a>
+      <p>Install the client, then run with <code>-relay default</code> to test immediately — no account required.</p>
+      <div class="btn-cta">
+        <a class="btn btn-primary btn-lg" href="/client.html">Install the client</a>
         <a class="btn btn-secondary" href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub →</a>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      &copy; 2026 openlawsvpn contributors &nbsp;·&nbsp;
-      <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a> &nbsp;·&nbsp;
-      <a href="/">Home</a> &nbsp;·&nbsp;
-      <a href="/client.html">Install</a> &nbsp;·&nbsp;
-      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
-    </div>
-  </footer>
+  </main>
+</div>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FT1WE72MX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0FT1WE72MX');
-  </script>
-  <script data-goatcounter="https://vorona.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+<footer class="docs-footer">
+  <span>© 2026 openlawsvpn contributors</span>
+  <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
+  <a href="/">Home</a>
+  <a href="/client.html">Client</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggle)
+      sidebar.classList.remove('open');
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0FT1WE72MX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0FT1WE72MX');</script>
+<script data-goatcounter="https://vorona.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

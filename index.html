@@ -24,163 +24,175 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "url": "https://openlawsvpn.com/",
     "downloadUrl": "https://github.com/openlawsvpn/go-openlawsvpn/releases/latest",
-    "description": "Open-source AWS Client VPN client with full SAML/SSO support for Linux and Android. Replaces the proprietary AWS VPN client. Works headless in CI/CD via the Relay feature.",
-    "author": {
-      "@type": "Organization",
-      "name": "openlawsvpn contributors",
-      "url": "https://github.com/openlawsvpn"
-    },
+    "description": "Open-source AWS Client VPN client with full SAML/SSO support for Linux and Android.",
+    "author": { "@type": "Organization", "name": "openlawsvpn contributors", "url": "https://github.com/openlawsvpn" },
     "softwareVersion": "1.0.9"
   }
   </script>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="container nav-inner">
-      <a href="/" class="nav-wordmark"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
-      <ul class="nav-links">
-        <li><a href="/client.html">Client</a></li>
-        <li><a href="/relay.html">Relay</a></li>
-        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a></li>
+<button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+<div class="docs-layout">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="/"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Getting started</span>
+      <ul class="sidebar-nav">
+        <li><a href="/" class="active">Overview</a></li>
+        <li><a href="/client.html">Client install</a></li>
       </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Relay</span>
+      <ul class="sidebar-nav">
+        <li><a href="/relay.html">How it works</a></li>
+        <li><a href="/relay.html#demo">Try the demo</a></li>
+        <li><a href="/relay.html#ci">CI/CD setup</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Apps</span>
+      <ul class="sidebar-nav">
+        <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
+        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp;
+      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
     </div>
   </nav>
 
-  <!-- ═══════════ HERO ═══════════ -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-tagline">Open-source AWS Client VPN — without the proprietary client</h1>
-      <p class="hero-sub">Native SAML/SSO for Linux and Android — including headless servers and CI/CD pipelines</p>
+  <main class="docs-main">
 
-      <div class="hero-badge">
+    <div class="page-header">
+      <h1>openlawsvpn</h1>
+      <p class="lead">Open-source AWS Client VPN — full SAML/SSO on Linux and Android, headless CI/CD via Relay.</p>
+      <div class="status-badge">
         <span class="dot">●</span>
-        v1.0.9 Linux · Android on Play Store · GTK4 GUI · relay v1.0.9 · FC43/44/rawhide · amd64/arm64/ppc64le
+        v1.0.9 Linux &nbsp;·&nbsp; Android on Play Store &nbsp;·&nbsp; relay v1.0.9
       </div>
-
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">View on GitHub →</a>
-        <a class="btn btn-secondary" href="/client.html">Install the client ↓</a>
-        <a class="btn btn-secondary" href="/relay.html">Relay / CI/CD →</a>
+      <div class="btn-cta">
+        <a class="btn btn-primary btn-lg" href="/client.html">Install the client</a>
+        <a class="btn btn-secondary btn-lg" href="/relay.html">Relay / CI/CD</a>
+        <a class="btn btn-secondary" href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub →</a>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ FEATURES ═══════════ -->
-  <section class="features">
-    <div class="container">
-      <h2>What's included</h2>
+    <div class="doc-section">
+      <h2>What is openlawsvpn?</h2>
+      <p>
+        The official AWS Client VPN client doesn't support Linux. openlawsvpn fills that gap:
+        a pure-Go implementation of the AWS Client VPN protocol, including the full
+        CRV1 SAML challenge-response flow. It works with any SAML 2.0 identity provider
+        AWS supports — Okta, Microsoft Entra ID, Google Workspace, JumpCloud, and others.
+      </p>
+      <p>
+        No runtime dependencies. No Electron, no Mono, no JVM. Statically linked binary
+        that runs on any Linux distro.
+      </p>
+    </div>
+
+    <div class="doc-section">
+      <h2>Products</h2>
+      <div class="product-grid">
+
+        <a class="product-card" href="/client.html">
+          <span class="icon">🐧</span>
+          <h3>Linux client</h3>
+          <p>Static CLI binary and GTK4 GUI. Fedora COPR RPM. amd64, arm64, ppc64le.</p>
+          <span class="card-tag">v1.0.9</span>
+        </a>
+
+        <a class="product-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
+          <span class="icon">📱</span>
+          <h3>Android app</h3>
+          <p>Pure Go VPN core via gomobile. SAML auth in-app via Chrome Custom Tab.</p>
+          <span class="card-tag">Play Store</span>
+        </a>
+
+        <a class="product-card" href="/relay.html">
+          <span class="icon">⚙️</span>
+          <h3>Relay service</h3>
+          <p>Headless VPN auth for CI/CD runners and servers. Human approves SAML from phone. Public demo — no account required.</p>
+          <span class="card-tag">v1.0.9</span>
+        </a>
+
+        <div class="product-card">
+          <span class="icon">📲</span>
+          <h3>Android relay app</h3>
+          <p>Dedicated app for relay operators — approve agent connections, manage tokens, monitor sessions.</p>
+          <span class="card-tag soon">coming soon</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <h2>SAML / SSO support</h2>
+      <p>
+        openlawsvpn implements the complete CRV1 challenge-response flow required by AWS Client VPN.
+        It works with any SAML 2.0 IdP supported by AWS — no custom configuration beyond
+        what you already have set up.
+      </p>
       <div class="feature-grid">
-
         <div class="feature-card">
           <span class="icon">🔐</span>
-          <h3>Full SAML / SSO</h3>
-          <p>Complete CRV1 challenge flow — Okta, Azure AD, Google Workspace, any AWS-supported IdP.</p>
-          <span class="tag">working</span>
+          <h3>Interactive (desktop / mobile)</h3>
+          <p>SAML login page opens in your system browser or Chrome Custom Tab. Credentials never touch openlawsvpn code.</p>
         </div>
-
         <div class="feature-card">
-          <span class="icon">🐧</span>
-          <h3>Native Linux CLI</h3>
-          <p>Statically linked binary. No Mono, no Java, no Electron. Pure Go — zero runtime dependencies.</p>
-          <span class="tag">working</span>
+          <span class="icon">🤖</span>
+          <h3>Headless (CI/CD, servers)</h3>
+          <p>Use Relay — a human approves auth from their phone while the headless agent establishes the tunnel. No secrets in the pipeline.</p>
         </div>
-
-        <div class="feature-card">
-          <span class="icon">🖥️</span>
-          <h3>GTK4 Desktop GUI</h3>
-          <p>libadwaita app for GNOME. Profile importer, connection status, tray icon. Ships as an RPM. Native system tray requires <code style="font-size:12px">gnome-shell-extension-appindicator</code>.</p>
-          <span class="tag">working</span>
-        </div>
-
-        <a class="feature-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
-          <span class="icon">📱</span>
-          <h3>Android App</h3>
-          <p>Pure Go VPN core via gomobile — no NDK, no JNI. SAML auth in-app via Chrome Custom Tab.</p>
-          <span class="tag">on Play Store</span>
-        </a>
-
-        <a class="feature-card" href="/relay.html">
-          <span class="icon">⚙️</span>
-          <h3>Relay — Headless Auth</h3>
-          <p>CI/CD runners and remote VMs can't open a browser. Relay lets a human approve VPN auth from their phone with one tap. Demo available — no account required.</p>
-          <span class="tag">v1.0.9</span>
-        </a>
-
-        <div class="feature-card">
-          <span class="icon">📦</span>
-          <h3>Fedora COPR</h3>
-          <p>Fully reproducible builds. No prebuilt blobs. Fedora COPR packages for FC43/44/rawhide on three architectures.</p>
-          <span class="tag">working</span>
-        </div>
-
-        <div class="feature-card">
-          <span class="icon">🔒</span>
-          <h3>Security Hardened</h3>
-          <p>Relay backend passes full OWASP audit: token auth on every endpoint, per-user ownership checks, payload limits, and CloudWatch alerting on auth failures.</p>
-          <span class="tag">v1.0.9</span>
-        </div>
-
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ RELAY TEASER ═══════════ -->
-  <section class="relay-section">
-    <div class="container">
-      <h2>Relay — VPN auth for CI/CD and headless servers</h2>
-      <p class="lede">
-        AWS Client VPN requires a browser for SAML authentication — fine on a developer laptop,
-        impossible on a CI runner or a remote VM behind NAT.
-        The Relay bridges the gap: the headless agent registers, a human approves from their phone,
-        the tunnel comes up. Zero credentials stored in CI.
-        Try it instantly with the public demo token.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="/relay.html">How Relay works →</a>
-        <a class="btn btn-secondary" href="/relay.html#demo">Try the demo ↓</a>
+    <div class="doc-section">
+      <h2>Quick start</h2>
+      <div class="callout info">
+        <p>For full install options including Fedora COPR RPM, GTK4 GUI, and Android — see the <a href="/client.html">Client install page</a>.</p>
       </div>
+      <pre class="code-block">BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-linux-amd64
+chmod +x openlawsvpn-cli-linux-amd64
+sudo mv openlawsvpn-cli-linux-amd64 /usr/local/bin/openlawsvpn-cli
+sudo openlawsvpn-cli --config ~/Downloads/client-config.ovpn</pre>
     </div>
-  </section>
 
-  <!-- ═══════════ GUI TEASER ═══════════ -->
-  <section class="relay-section" id="gui">
-    <div class="container">
-      <h2>Native GTK4 Desktop GUI</h2>
-      <p class="lede">
-        A clean libadwaita app that lives in your GNOME tray. Import a profile, click Connect — SAML opens
-        in your browser, the tunnel comes up, and the tray icon turns red. Includes a Relay screen to
-        approve headless agent connections from the same app.
-      </p>
-      <div class="relay-diagram">
-        <img src="promo-gui.svg" alt="openlawsvpn GTK4 GUI showing idle and connected states with Relay screen">
-      </div>
-      <div class="hero-cta" style="margin-top:20px">
-        <a class="btn btn-secondary" href="/client.html">Install the client →</a>
-      </div>
-    </div>
-  </section>
+  </main>
+</div>
 
-  <footer>
-    <div class="container">
-      &copy; 2026 openlawsvpn contributors &nbsp;·&nbsp;
-      <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a> &nbsp;·&nbsp;
-      <a href="/client.html">Install</a> &nbsp;·&nbsp;
-      <a href="/relay.html">Relay</a> &nbsp;·&nbsp;
-      <a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
-    </div>
-  </footer>
+<footer class="docs-footer">
+  <span>© 2026 openlawsvpn contributors</span>
+  <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
+  <a href="/client.html">Client</a>
+  <a href="/relay.html">Relay</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
+</footer>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FT1WE72MX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0FT1WE72MX');
-  </script>
-  <script data-goatcounter="https://vorona.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggle)
+      sidebar.classList.remove('open');
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0FT1WE72MX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0FT1WE72MX');</script>
+<script data-goatcounter="https://vorona.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

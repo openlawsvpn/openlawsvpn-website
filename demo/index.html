@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>openlawsvpn — Demo &amp; Review Guide</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100dvh;
+      padding: 48px 24px 64px;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .wordmark {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      color: #e6edf3;
+    }
+    .wordmark .pipe { color: #f78166; }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .lead {
+      color: #8b949e;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8b949e;
+      margin-bottom: 12px;
+    }
+    .section { margin-bottom: 40px; }
+    /* Download card */
+    .download-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .download-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: #1c2128;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .download-icon svg { display: block; }
+    .download-info { flex: 1; min-width: 0; }
+    .download-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .download-meta {
+      font-size: 0.8rem;
+      color: #8b949e;
+    }
+    .btn-download {
+      flex-shrink: 0;
+      background: #238636;
+      border: 1px solid #2ea043;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-download:hover { background: #2ea043; }
+    /* Steps */
+    .steps { list-style: none; }
+    .steps li {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #21262d;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #1c2128;
+      border: 1px solid #30363d;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #79c0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .step-body {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: #c9d1d9;
+    }
+    .step-body strong { color: #e6edf3; }
+    /* Credentials box */
+    .cred-box {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 18px 22px;
+      font-size: 0.88rem;
+      line-height: 2;
+    }
+    .cred-box .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cred-box .row + .row { border-top: 1px solid #21262d; }
+    .cred-label {
+      width: 90px;
+      color: #8b949e;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    code {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", monospace;
+      font-size: 0.88em;
+      color: #79c0ff;
+      user-select: all;
+    }
+    /* Note box */
+    .note {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-left: 3px solid #d29922;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: #8b949e;
+      line-height: 1.6;
+    }
+    .note strong { color: #e3b341; }
+    /* Footer */
+    .footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid #21262d;
+      font-size: 0.8rem;
+      color: #484f58;
+    }
+    .footer a { color: #58a6ff; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 480px) {
+      .download-card { flex-wrap: wrap; }
+      .btn-download { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <a class="wordmark" href="https://openlawsvpn.com">open<span class="pipe">|</span>awsvpn</a>
+
+  <h1>Demo &amp; Review Guide</h1>
+  <p class="lead">
+    This page is for QA engineers, app-store reviewers, and testers who need to exercise
+    the full openlawsvpn SAML authentication flow without a production account.
+    Download the sample config below, follow the steps, and the app will walk you through the rest.
+  </p>
+
+  <!-- Download -->
+  <div class="section">
+    <h2>Sample client config</h2>
+    <div class="download-card">
+      <div class="download-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+             stroke="#8b949e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="12" y1="11" x2="12" y2="17"/>
+          <polyline points="9 14 12 17 15 14"/>
+        </svg>
+      </div>
+      <div class="download-info">
+        <div class="download-name">saml-client.ovpn</div>
+        <div class="download-meta">OpenVPN profile · SAML flow · demo.openlawsvpn.com:4433</div>
+      </div>
+      <a class="btn-download" href="saml-client.ovpn" download>Download</a>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <div class="section">
+    <h2>How to connect</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <span class="step-body">
+          <strong>Download</strong> <code>saml-client.ovpn</code> using the button above.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span class="step-body">
+          <strong>Open the openlawsvpn app</strong> on your device. On Android, tap the
+          <em>+</em> button; on desktop, use <em>Import profile</em>.
+          Select the downloaded <code>.ovpn</code> file.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span class="step-body">
+          <strong>Tap Connect.</strong> The app will open a browser window pointing to
+          the demo login page. Enter the credentials shown in the box below.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span class="step-body">
+          <strong>Click "Connect"</strong> on the login page. The browser window closes
+          automatically and the VPN tunnel comes up.
+        </span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <span class="step-body">
+          <strong>Verify the connection</strong> — the app status bar should show
+          <em>Connected</em> and a server address of <code>demo.openlawsvpn.com</code>.
+        </span>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Credentials -->
+  <div class="section">
+    <h2>Demo credentials</h2>
+    <div class="cred-box">
+      <div class="row" style="padding: 10px 0 10px;">
+        <span class="cred-label">Username</span>
+        <code>reviewer</code>
+      </div>
+      <div class="row" style="padding: 10px 0 10px;">
+        <span class="cred-label">Password</span>
+        <code>Demo2026!</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <div class="section">
+    <div class="note">
+      <strong>Note for app-store reviewers:</strong> This is a read-only sandbox environment.
+      No real user data is stored. The demo server accepts only the credentials above and
+      rejects everything else. The VPN tunnel terminates on a dedicated review instance
+      and carries no production traffic.
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://openlawsvpn.com">openlawsvpn.com</a>
+  </div>
+
+</div>
+</body>
+</html>

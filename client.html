@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Install openlawsvpn — Linux CLI, GTK4 GUI, Android App</title>
+  <title>Install openlawsvpn — Linux CLI, GTK4 GUI, macOS, Android App</title>
   <link rel="canonical" href="https://openlawsvpn.com/client.html">
-  <meta name="description" content="Install openlawsvpn on Linux (static binary or Fedora COPR RPM) or Android. Full SAML/SSO for AWS Client VPN. GTK4 libadwaita desktop GUI included. amd64, arm64, ppc64le.">
+  <meta name="description" content="Install openlawsvpn on Linux (static binary or Fedora COPR RPM), macOS (static binary), or Android. Full SAML/SSO for AWS Client VPN. GTK4 libadwaita desktop GUI included. amd64, arm64, ppc64le.">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/client.html">
-  <meta property="og:title"       content="Install openlawsvpn — Linux CLI, GTK4 GUI, Android App">
-  <meta property="og:description" content="Install openlawsvpn: static binary for any Linux distro, Fedora COPR RPM, Android on Play Store, or build from source.">
+  <meta property="og:title"       content="Install openlawsvpn — Linux CLI, GTK4 GUI, macOS, Android App">
+  <meta property="og:description" content="Install openlawsvpn: static binary for any Linux distro or macOS, Fedora COPR RPM, Android on Play Store, or build from source.">
   <meta name="twitter:card"       content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -67,7 +67,7 @@
 
     <div class="page-header">
       <h1>Install openlawsvpn</h1>
-      <p class="lead">Linux CLI, GTK4 GUI, and Android app — open source, zero runtime dependencies.</p>
+      <p class="lead">Linux CLI, GTK4 GUI, macOS CLI, and Android app — open source, zero runtime dependencies.</p>
     </div>
 
     <!-- ── Platforms ── -->
@@ -79,14 +79,18 @@
           <span class="icon">🐧</span>
           <h3>Linux CLI</h3>
           <p>Statically linked Go binary. No Mono, no Java, no Electron, no runtime. Works on any Linux distro. amd64, arm64, ppc64le.</p>
-          <span class="card-tag">v1.0.9</span>
         </div>
 
         <div class="product-card">
           <span class="icon">🖥️</span>
           <h3>GTK4 Desktop GUI</h3>
           <p>libadwaita app for GNOME — profile importer, one-click connect, tray icon. Ships as a Fedora COPR RPM.</p>
-          <span class="card-tag">v1.0.9</span>
+        </div>
+
+        <div class="product-card" id="macos">
+          <span class="icon">🍎</span>
+          <h3>macOS CLI</h3>
+          <p>Statically linked binary for Apple Silicon (arm64) and Intel (amd64). Download from GitHub Releases.</p>
         </div>
 
         <a class="product-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
@@ -105,12 +109,14 @@
 
       <div class="tabs">
         <input type="radio" name="install-tab" id="tab-binary" checked>
+        <input type="radio" name="install-tab" id="tab-macos">
         <input type="radio" name="install-tab" id="tab-fedora">
         <input type="radio" name="install-tab" id="tab-android">
         <input type="radio" name="install-tab" id="tab-source">
 
         <div class="tab-labels">
-          <label for="tab-binary">Static binary</label>
+          <label for="tab-binary">Linux binary</label>
+          <label for="tab-macos">macOS</label>
           <label for="tab-fedora">Fedora / RHEL</label>
           <label for="tab-android">Android</label>
           <label for="tab-source">From source</label>
@@ -152,6 +158,35 @@ sudo mv openlawsvpn-cli-linux-ppc64le /usr/local/bin/openlawsvpn-cli</code></pre
             <div class="tab-content" style="border-top:1px solid var(--border)">
               <p class="tab-note">statically linked, zero dependencies — requires root or CAP_NET_ADMIN+CAP_NET_RAW</p>
               <p class="tab-note">for the GUI or Fedora RPM — use the Fedora / RHEL tab</p>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-macos">
+            <div class="sub-tabs">
+              <input type="radio" name="macos-tab" id="mtab-arm64" checked>
+              <input type="radio" name="macos-tab" id="mtab-amd64">
+              <div class="sub-tab-labels">
+                <label for="mtab-arm64">Apple Silicon</label>
+                <label for="mtab-amd64">Intel</label>
+              </div>
+              <div class="sub-tab-panels">
+                <div class="sub-tab-panel" id="mpanel-arm64">
+                  <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-macos-arm64
+chmod +x openlawsvpn-cli-macos-arm64
+sudo mv openlawsvpn-cli-macos-arm64 /usr/local/bin/openlawsvpn-cli</code></pre>
+                </div>
+                <div class="sub-tab-panel" id="mpanel-amd64">
+                  <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
+curl -LO $BASE/openlawsvpn-cli-macos-amd64
+chmod +x openlawsvpn-cli-macos-amd64
+sudo mv openlawsvpn-cli-macos-amd64 /usr/local/bin/openlawsvpn-cli</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content" style="border-top:1px solid var(--border)">
+              <p class="tab-note">statically linked — run with sudo or grant network extension permissions when prompted</p>
+              <p class="tab-note">macOS may show an unsigned binary warning on first run — right-click → Open to bypass</p>
             </div>
           </div>
 
@@ -202,7 +237,6 @@ openlawsvpn-gui</code></pre>
               <div style="margin-bottom:16px">
                 <a class="btn btn-primary btn-lg" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Get it on Google Play →</a>
               </div>
-              <p class="tab-note">iOS / macOS planned for a future release</p>
             </div>
           </div>
 

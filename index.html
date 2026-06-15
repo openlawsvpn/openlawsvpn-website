@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>openlawsvpn — AWS Client VPN without the proprietary client</title>
   <link rel="canonical" href="https://openlawsvpn.com/">
-  <meta name="description" content="Open-source AWS Client VPN client for Linux and Android. Full SAML/SSO support — Okta, Azure AD, Google Workspace. Works headless in CI/CD pipelines. Free forever.">
+  <meta name="description" content="Open-source AWS Client VPN client for Linux, macOS, and Android. Full SAML/SSO support — Okta, Azure AD, Google Workspace. Works headless in CI/CD pipelines. Free forever.">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/">
   <meta property="og:title"       content="openlawsvpn — AWS Client VPN without the proprietary client">
-  <meta property="og:description" content="Open-source AWS Client VPN client for Linux and Android. SAML/SSO, headless CI/CD via Relay. Free forever.">
+  <meta property="og:description" content="Open-source AWS Client VPN client for Linux, macOS, and Android. SAML/SSO, headless CI/CD via Relay. Free forever.">
   <meta name="twitter:card"       content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -19,14 +19,14 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "openlawsvpn",
-    "operatingSystem": "Linux, Android",
+    "operatingSystem": "Linux, macOS, Android",
     "applicationCategory": "NetworkingApplication",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "url": "https://openlawsvpn.com/",
     "downloadUrl": "https://github.com/openlawsvpn/go-openlawsvpn/releases/latest",
-    "description": "Open-source AWS Client VPN client with full SAML/SSO support for Linux and Android.",
+    "description": "Open-source AWS Client VPN client with full SAML/SSO support for Linux, macOS, and Android.",
     "author": { "@type": "Organization", "name": "openlawsvpn contributors", "url": "https://github.com/openlawsvpn" },
-    "softwareVersion": "1.0.9"
+    "softwareVersion": "1.1.3"
   }
   </script>
 </head>
@@ -76,10 +76,10 @@
 
     <div class="page-header">
       <h1>openlawsvpn</h1>
-      <p class="lead">Open-source AWS Client VPN — full SAML/SSO on Linux and Android, headless CI/CD via Relay.</p>
+      <p class="lead">Open-source AWS Client VPN — full SAML/SSO on Linux, macOS, and Android, headless CI/CD via Relay.</p>
       <div class="status-badge">
         <span class="dot">●</span>
-        v1.0.9 Linux &nbsp;·&nbsp; Android on Play Store &nbsp;·&nbsp; relay v1.0.9
+        Linux &nbsp;·&nbsp; macOS &nbsp;·&nbsp; Android on Play Store &nbsp;·&nbsp; relay live
       </div>
       <div class="btn-cta">
         <a class="btn btn-primary btn-lg" href="/client.html">Install the client</a>
@@ -98,7 +98,7 @@
       </p>
       <p>
         No runtime dependencies. No Electron, no Mono, no JVM. Statically linked binary
-        that runs on any Linux distro.
+        that runs on any Linux distro or macOS.
       </p>
     </div>
 
@@ -110,7 +110,12 @@
           <span class="icon">🐧</span>
           <h3>Linux client</h3>
           <p>Static CLI binary and GTK4 GUI. Fedora COPR RPM. amd64, arm64, ppc64le.</p>
-          <span class="card-tag">v1.0.9</span>
+        </a>
+
+        <a class="product-card" href="/client.html#macos">
+          <span class="icon">🍎</span>
+          <h3>macOS client</h3>
+          <p>Static CLI binary for Apple Silicon and Intel. No installer needed.</p>
         </a>
 
         <a class="product-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
@@ -124,7 +129,6 @@
           <span class="icon">⚙️</span>
           <h3>Relay service</h3>
           <p>Headless VPN auth for CI/CD runners and servers. Human approves SAML from phone. Public demo — no account required.</p>
-          <span class="card-tag">v1.0.9</span>
         </a>
 
         <div class="product-card">
@@ -161,7 +165,7 @@
     <div class="doc-section">
       <h2>Quick start</h2>
       <div class="callout info">
-        <p>For full install options including Fedora COPR RPM, GTK4 GUI, and Android — see the <a href="/client.html">Client install page</a>.</p>
+        <p>For full install options including Fedora COPR RPM, GTK4 GUI, macOS, and Android — see the <a href="/client.html">Client install page</a>.</p>
       </div>
       <pre class="code-block">BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
 curl -LO $BASE/openlawsvpn-cli-linux-amd64

@@ -178,21 +178,16 @@
     return document.cookie.split(";").some(c => c.trim().startsWith(COOKIE_KEY + "="));
   }
 
-  function sendToken() {
-    // Submit a real form POST so the browser follows the 302 redirect that
-    // the app's local ACS server sends back (openlawsvpn:// on iOS,
-    // openlawsvpngo:// on Android). fetch() would silently consume the
-    // redirect without navigating, so the deeplink would never fire.
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = ACS_URL;
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = "SAMLResponse";
-    input.value = DEMO_TOKEN;
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
+  async function sendToken() {
+    const body = "SAMLResponse=" + encodeURIComponent(DEMO_TOKEN);
+    try {
+      await fetch(ACS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+        mode: "no-cors",
+      });
+    } catch (_) {}
   }
 
   // If already authenticated via cookie, skip the form entirely.
@@ -201,14 +196,17 @@
     document.querySelector(".hint-box").style.display = "none";
     statusEl.className = "status ok";
     statusEl.textContent = "✓ Reconnecting…";
-    sendToken(); // form submit → browser follows 302 → deeplink opens app
+    sendToken().then(() => {
+      statusEl.textContent = "✓ Credentials sent — returning to app…";
+      setTimeout(() => window.close(), 1200);
+    });
   } else {
     // Pre-fill from cookie hint (first-time: show form normally).
     userInput.value = "";
     passInput.value = "";
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     [userInput, passInput].forEach(i => i.classList.remove("error"));
@@ -236,7 +234,11 @@
     statusEl.textContent = "Sending credentials to app…";
 
     setCookie();
-    sendToken(); // form submit → browser follows 302 → deeplink opens app
+    await sendToken();
+
+    statusEl.className = "status ok";
+    statusEl.textContent = "✓ Credentials accepted — closing…";
+    setTimeout(() => window.close(), 1200);
   });
 </script>
 </body>

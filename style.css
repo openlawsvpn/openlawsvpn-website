@@ -404,6 +404,7 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 }
 .tab-labels label:hover { color: var(--text); }
 #tab-binary:checked  ~ .tab-labels label[for="tab-binary"],
+#tab-macos:checked   ~ .tab-labels label[for="tab-macos"],
 #tab-fedora:checked  ~ .tab-labels label[for="tab-fedora"],
 #tab-android:checked ~ .tab-labels label[for="tab-android"],
 #tab-source:checked  ~ .tab-labels label[for="tab-source"] {
@@ -411,6 +412,7 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 }
 .tab-panel { display: none; }
 #tab-binary:checked  ~ .tab-panels #panel-binary,
+#tab-macos:checked   ~ .tab-panels #panel-macos,
 #tab-fedora:checked  ~ .tab-panels #panel-fedora,
 #tab-android:checked ~ .tab-panels #panel-android,
 #tab-source:checked  ~ .tab-panels #panel-source { display: block; }
@@ -451,6 +453,8 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 #ftab-root:checked     ~ .sub-tab-labels label[for="ftab-root"],
 #ftab-rootless:checked ~ .sub-tab-labels label[for="ftab-rootless"],
 #ftab-gui:checked      ~ .sub-tab-labels label[for="ftab-gui"],
+#mtab-arm64:checked    ~ .sub-tab-labels label[for="mtab-arm64"],
+#mtab-amd64:checked    ~ .sub-tab-labels label[for="mtab-amd64"],
 #btab-amd64:checked    ~ .sub-tab-labels label[for="btab-amd64"],
 #btab-arm64:checked    ~ .sub-tab-labels label[for="btab-arm64"],
 #btab-ppc64le:checked  ~ .sub-tab-labels label[for="btab-ppc64le"] {
@@ -460,6 +464,8 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 #ftab-root:checked     ~ .sub-tab-panels #fpanel-root,
 #ftab-rootless:checked ~ .sub-tab-panels #fpanel-rootless,
 #ftab-gui:checked      ~ .sub-tab-panels #fpanel-gui,
+#mtab-arm64:checked    ~ .sub-tab-panels #mpanel-arm64,
+#mtab-amd64:checked    ~ .sub-tab-panels #mpanel-amd64,
 #btab-amd64:checked    ~ .sub-tab-panels #bpanel-amd64,
 #btab-arm64:checked    ~ .sub-tab-panels #bpanel-arm64,
 #btab-ppc64le:checked  ~ .sub-tab-panels #bpanel-ppc64le { display: block; }

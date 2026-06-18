@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — openlawsvpn</title>
   <link rel="canonical" href="https://openlawsvpn.com/privacy.html">
-  <meta name="description" content="Privacy policy for the openlawsvpn Android app and VPN clients. No data collection, no telemetry, no tracking.">
+  <meta name="description" content="Privacy policy for the openlawsvpn iOS and Android apps and VPN clients. No data collection, no telemetry, no tracking.">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/privacy.html">
   <meta property="og:title"       content="Privacy Policy — openlawsvpn">
   <meta property="og:description" content="The openlawsvpn app collects no personal data, no analytics, no telemetry. VPN traffic goes directly to your own AWS endpoint.">
   <meta name="twitter:card"       content="summary_large_image">
-  <meta name="robots"             content="noindex">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
   <link rel="stylesheet" href="/style.css">
 </head>
@@ -53,7 +52,8 @@
 
     <div class="sidebar-footer">
       <a href="/privacy.html" style="color:var(--muted)">Privacy</a> &nbsp;·&nbsp;
-      <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a>
+      <a href="/terms.html" style="color:var(--muted)">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a>
     </div>
   </nav>
 
@@ -66,7 +66,7 @@
     </div>
 
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: May 24, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn client (Android), openlawsvpn relay (Android), and all other openlawsvpn apps and clients</p>
+    <p class="effective">Effective date: May 24, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn client (iOS &amp; Android), openlawsvpn relay (Android), and all other openlawsvpn apps and clients</p>
 
     <div class="callout">
       <p><strong>Short version:</strong> The openlawsvpn apps do not collect, store, or transmit any personal data to openlawsvpn servers. In direct mode, your VPN traffic goes directly to your own AWS endpoint. Relay mode requires minimal data to transit the relay service by its nature — see section 3 for details.</p>
@@ -100,7 +100,13 @@
     <p>The app does not integrate any third-party analytics, advertising, crash-reporting, or data-processing services.</p>
 
     <h2>6. Permissions</h2>
-    <p>Each client requests only the permissions required to operate as a VPN client. On Android:</p>
+    <p>Each client requests only the permissions required to operate as a VPN client.</p>
+    <p><strong>On iOS:</strong></p>
+    <ul>
+      <li><strong>VPN configuration (Network Extension)</strong> — required to create and manage the VPN tunnel. iOS prompts the user to allow VPN configuration on first connection.</li>
+      <li><strong>App Group (local IPC)</strong> — used only for inter-process communication between the main app and the VPN tunnel extension running on the same device. No data leaves the device through this mechanism.</li>
+    </ul>
+    <p><strong>On Android:</strong></p>
     <ul>
       <li><strong>INTERNET</strong> — required to establish the VPN tunnel.</li>
       <li><strong>BIND_VPN_SERVICE / VpnService</strong> — required by Android to create a VPN tunnel interface.</li>
@@ -108,17 +114,21 @@
       <li><strong>POST_NOTIFICATIONS</strong> — displays the persistent "Connected" notification and Disconnect action (Android 13+).</li>
       <li><strong>ACCESS_NETWORK_STATE</strong> — detects network loss so the app can update its status when the tunnel drops.</li>
     </ul>
-    <p>On Linux the CLI and GUI require no special permissions beyond the network capabilities needed to create a tunnel interface (CAP_NET_ADMIN+CAP_NET_RAW or run as root).</p>
+    <p><strong>On Linux</strong> the CLI and GUI require no special permissions beyond the network capabilities needed to create a tunnel interface (CAP_NET_ADMIN+CAP_NET_RAW or run as root).</p>
     <p>No location, contacts, camera, microphone, or unnecessary storage permissions are requested on any platform.</p>
 
-    <h2>7. Children's privacy</h2>
+    <h2>7. In-App Purchases (iOS)</h2>
+    <p>The iOS app offers a monthly subscription processed entirely by Apple through the App Store. openlawsvpn does not receive or store your payment information. We receive only a signal from Apple's StoreKit framework indicating whether a valid subscription entitlement is active on your device. No financial data is transmitted to openlawsvpn servers as part of the purchase process.</p>
+    <p>For questions about billing, cancellation, or refunds, visit <a href="https://support.apple.com/billing" rel="noopener">Apple's billing support</a>.</p>
+
+    <h2>8. Children's privacy</h2>
     <p>The app is not directed at children under 13 and does not knowingly collect information from children.</p>
 
-    <h2>8. Changes to this policy</h2>
+    <h2>9. Changes to this policy</h2>
     <p>If this policy changes materially, the updated version will be posted at this URL with a revised effective date. The app is open source — all changes are visible in the <a href="https://github.com/openlawsvpn/go-openlawsvpn">public repository</a>.</p>
 
-    <h2>9. Contact</h2>
-    <p>Questions about this policy: <a href="mailto:security@openlawsvpn.com">security@openlawsvpn.com</a></p>
+    <h2>10. Contact</h2>
+    <p>Questions about this policy: <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a></p>
 
   </main>
 </div>

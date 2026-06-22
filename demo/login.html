@@ -121,6 +121,13 @@
     }
     .status.ok { color: #3fb950; }
     .status.err { color: #f85149; }
+    .build-stamp {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #484f58;
+      margin-top: 16px;
+      font-family: ui-monospace, "Cascadia Code", monospace;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +157,7 @@
     <button type="submit" id="submitBtn">Connect</button>
   </form>
   <p class="status" id="status"></p>
+  <p class="build-stamp">updated 2026-06-22 22:08 UTC</p>
 </div>
 
 <script>

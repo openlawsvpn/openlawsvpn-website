@@ -178,35 +178,44 @@
     return document.cookie.split(";").some(c => c.trim().startsWith(COOKIE_KEY + "="));
   }
 
-  async function sendToken() {
-    const body = "SAMLResponse=" + encodeURIComponent(DEMO_TOKEN);
-    try {
-      await fetch(ACS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
-        mode: "no-cors",
-      });
-    } catch (_) {}
+  // Deliver the SAMLResponse to the app's local ACS server (127.0.0.1:35001) via a
+  // real form-POST *navigation* — exactly like a real AWS Client VPN IdP does. This
+  // is the only delivery method that works in BOTH browsers the apps drive:
+  //   • iOS — ASWebAuthenticationSession (Safari/WebKit) blocks an https→http fetch()
+  //     to 127.0.0.1 as mixed content, but ALLOWS a top-level form-POST navigation.
+  //   • Android — Chrome Custom Tab follows the navigation the same way.
+  // The ACS server answers the POST with 302 → openlawsvpn://saml-callback, which both
+  // apps catch to dismiss the browser and resume the tunnel. No window.close() needed.
+  //
+  // NB: iOS shows a one-time "This form is not secure — Submit?" prompt because the
+  // post target is http (loopback). Tapping Submit is expected — same as real AWS.
+  function sendToken() {
+    const f = document.createElement("form");
+    f.method = "POST";
+    f.action = ACS_URL;
+    const i = document.createElement("input");
+    i.type = "hidden";
+    i.name = "SAMLResponse";
+    i.value = DEMO_TOKEN;
+    f.appendChild(i);
+    document.body.appendChild(f);
+    f.submit();
   }
 
-  // If already authenticated via cookie, skip the form entirely.
+  // If already authenticated via cookie, skip the form and post immediately.
   if (hasCookie()) {
     form.style.display = "none";
     document.querySelector(".hint-box").style.display = "none";
     statusEl.className = "status ok";
     statusEl.textContent = "✓ Reconnecting…";
-    sendToken().then(() => {
-      statusEl.textContent = "✓ Credentials sent — returning to app…";
-      setTimeout(() => window.close(), 1200);
-    });
+    sendToken();
   } else {
     // Pre-fill from cookie hint (first-time: show form normally).
     userInput.value = "";
     passInput.value = "";
   }
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     [userInput, passInput].forEach(i => i.classList.remove("error"));
@@ -231,14 +240,11 @@
     if (!valid) return;
 
     submitBtn.disabled = true;
-    statusEl.textContent = "Sending credentials to app…";
+    statusEl.className = "status ok";
+    statusEl.textContent = "✓ Credentials accepted — returning to app…";
 
     setCookie();
-    await sendToken();
-
-    statusEl.className = "status ok";
-    statusEl.textContent = "✓ Credentials accepted — closing…";
-    setTimeout(() => window.close(), 1200);
+    sendToken();
   });
 </script>
 </body>

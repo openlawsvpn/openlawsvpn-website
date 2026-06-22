@@ -232,7 +232,8 @@
       <li>
         <span class="step-num">2</span>
         <span class="step-body">
-          <strong>Open the openlawsvpn app</strong> on your device. On Android, tap the
+          <strong>Open the openlawsvpn app</strong> on your device. On iOS, tap
+          <em>+ Add Profile</em> and pick the file from <em>Files</em>; on Android, tap the
           <em>+</em> button; on desktop, use <em>Import profile</em>.
           Select the downloaded <code>.ovpn</code> file.
         </span>
@@ -242,13 +243,17 @@
         <span class="step-body">
           <strong>Tap Connect.</strong> The app will open a browser window pointing to
           the demo login page. Enter the credentials shown in the box below.
+          <em>On iOS, the first time you connect, iOS asks "openlawsvpn Wants to Use
+          openlawsvpn.com to Sign In" — tap Continue.</em>
         </span>
       </li>
       <li>
         <span class="step-num">4</span>
         <span class="step-body">
           <strong>Click "Connect"</strong> on the login page. The browser window closes
-          automatically and the VPN tunnel comes up.
+          automatically and the VPN tunnel comes up. <em>On iOS you may first see
+          "This form is not secure — Submit?" — tap Submit; this returns the sign-in
+          token to the app over its private loopback address.</em>
         </span>
       </li>
       <li>
@@ -286,6 +291,19 @@
     </div>
   </div>
 
+  <!-- iOS note -->
+  <div class="section">
+    <div class="note">
+      <strong>iOS reviewers — two expected system prompts:</strong>
+      (1) The first time you tap Connect, iOS asks
+      <em>"openlawsvpn Wants to Use openlawsvpn.com to Sign In"</em> — tap <em>Continue</em>.
+      (2) After entering the credentials and tapping Connect on the login page, iOS may show
+      <em>"This form is not secure — Submit?"</em> — tap <em>Submit</em>. Both are standard iOS
+      prompts; the sign-in token is delivered to the app over its private loopback address
+      (<code>127.0.0.1</code>) and nothing leaves the device.
+    </div>
+  </div>
+
   <!-- Browser close prompt note -->
   <div class="section">
     <div class="note">
@@ -299,6 +317,7 @@
 
   <div class="footer">
     <a href="https://openlawsvpn.com">openlawsvpn.com</a>
+    <span style="float:right;color:#484f58;font-family:ui-monospace,monospace;font-size:0.92em;">updated 2026-06-22 22:08 UTC</span>
   </div>
 
 </div>

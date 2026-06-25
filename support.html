@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — openlawsvpn</title>
+  <link rel="canonical" href="https://openlawsvpn.com/support">
+  <meta name="description" content="Support for the openlawsvpn iOS and Android VPN clients. Troubleshooting, FAQ, and contact information.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://openlawsvpn.com/support">
+  <meta property="og:title"       content="Support — openlawsvpn">
+  <meta property="og:description" content="Get help with the openlawsvpn iOS and Android clients. Troubleshooting guides, FAQ, and contact info.">
+  <meta name="twitter:card"       content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+<div class="docs-layout">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="/"><span class="wm-open">open</span><span class="wm-pipe">|</span><span class="wm-aws">aws</span><span class="wm-vpn">vpn</span></a>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Getting started</span>
+      <ul class="sidebar-nav">
+        <li><a href="/">Overview</a></li>
+        <li><a href="/client.html">Client install</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Relay</span>
+      <ul class="sidebar-nav">
+        <li><a href="/relay.html">How it works</a></li>
+        <li><a href="/relay.html#demo">Try the demo</a></li>
+        <li><a href="/relay.html#ci">CI/CD setup</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Apps</span>
+      <ul class="sidebar-nav">
+        <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
+        <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="/privacy.html" style="color:var(--muted)">Privacy</a> &nbsp;·&nbsp;
+      <a href="/terms.html" style="color:var(--muted)">Terms</a> &nbsp;·&nbsp;
+      <a href="mailto:support@openlawsvpn.com">support@openlawsvpn.com</a>
+    </div>
+  </nav>
+
+  <main class="docs-main content">
+
+    <div class="breadcrumb">
+      <a href="/">openlawsvpn</a>
+      <span>›</span>
+      <span>Support</span>
+    </div>
+
+    <h1>Support</h1>
+
+    <p>openlawsvpn connects to <strong>AWS Client VPN</strong> endpoints that use <strong>SAML / SSO</strong> authentication. The app does not store passwords — sign-in always happens through your organisation's identity provider in the browser.</p>
+
+    <div class="callout">
+      <p><strong>Need help?</strong> Email <a href="mailto:support@openlawsvpn.com">support@openlawsvpn.com</a> and include the output from the <strong>Log</strong> tab if possible.</p>
+    </div>
+
+    <h2>Requirements</h2>
+    <ul>
+      <li>An AWS Client VPN endpoint configured for SAML federated authentication.</li>
+      <li>A <code>.ovpn</code> profile file from your network administrator (or your organisation's VPN portal).</li>
+      <li>An account with your organisation's identity provider (Google Workspace, Okta, AWS IAM Identity Center, Microsoft Entra ID, or any SAML 2.0 provider).</li>
+      <li>An active openlawsvpn subscription (managed via App Store → Settings → Apple Account → Subscriptions).</li>
+    </ul>
+
+    <h2>Getting started</h2>
+
+    <h3>1. Subscribe</h3>
+    <p>On first launch the app shows a subscription screen. Start a free trial or subscribe monthly to unlock the main interface. You can manage or cancel the subscription at any time in <strong>Settings → Apple Account → Subscriptions</strong>.</p>
+
+    <h3>2. Add a profile</h3>
+    <p>Save the <code>.ovpn</code> file your administrator provided to the Files app (or AirDrop it to your device). Open openlawsvpn, go to the <strong>Connect</strong> tab, tap <strong>+ Add Profile</strong>, and select the file. The profile appears in the list.</p>
+
+    <h3>3. Connect</h3>
+    <ol>
+      <li>Tap <strong>Connect</strong> on the profile. The row shows <em>Waiting for SAML…</em>.</li>
+      <li>The first time, iOS asks permission to open your identity provider for sign-in — tap <strong>Continue</strong>.</li>
+      <li>Sign in on your identity provider's page. After sign-in, the browser may show "This form is not secure — Submit?" — tap <strong>Submit</strong>. This is the secure token being returned to the app over your device's private loopback address (<code>127.0.0.1</code>); nothing leaves your device.</li>
+      <li>The row shows <strong>● Connected</strong> and iOS shows the VPN badge in the status bar.</li>
+    </ol>
+
+    <h3>4. Disconnect</h3>
+    <p>Tap <strong>Disconnect</strong> on the connected profile. The VPN badge disappears.</p>
+
+    <h2>Troubleshooting</h2>
+
+    <table>
+      <thead>
+        <tr><th>Symptom</th><th>What to do</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sign-in page won't load</td>
+          <td>Check your internet connection and tap Disconnect, then Connect again.</td>
+        </tr>
+        <tr>
+          <td>Connect button does nothing</td>
+          <td>Make sure a profile is selected and your subscription is active (Settings → Apple Account → Subscriptions).</td>
+        </tr>
+        <tr>
+          <td>Stuck on <em>Waiting for SAML…</em></td>
+          <td>The browser sign-in wasn't completed. Sign-in times out after 5 minutes. Tap Disconnect and try again.</td>
+        </tr>
+        <tr>
+          <td>Sign-in is rejected</td>
+          <td>Use your normal work credentials. If the problem persists, contact your VPN administrator — your account may need to be added to the IdP group that has access to the VPN endpoint.</td>
+        </tr>
+        <tr>
+          <td>Connected, but a site won't load</td>
+          <td>That resource may not be routed through this VPN profile. Check the split-tunnel configuration with your administrator.</td>
+        </tr>
+        <tr>
+          <td>Profile fails to import</td>
+          <td>Make sure the file has a <code>.ovpn</code> extension and was generated for AWS Client VPN with SAML authentication. Standard OpenVPN-only profiles are not supported.</td>
+        </tr>
+        <tr>
+          <td>Subscription not recognised after restoring purchases</td>
+          <td>Tap <strong>Restore Purchases</strong> on the subscription screen, or go to Settings → Apple Account → Subscriptions to confirm the subscription is active.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Billing &amp; subscriptions</h2>
+    <p>Subscriptions are managed entirely by Apple. openlawsvpn does not store payment information.</p>
+    <ul>
+      <li><strong>Cancel:</strong> Settings → Apple Account → Subscriptions → openlawsvpn → Cancel Subscription.</li>
+      <li><strong>Refund requests:</strong> <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a> or <a href="https://support.apple.com/billing" rel="noopener">Apple billing support</a>.</li>
+    </ul>
+
+    <h2>Privacy</h2>
+    <p>The app collects no personal data, no analytics, and no telemetry. See our full <a href="/privacy.html">Privacy Policy</a>.</p>
+
+    <h2>Contact</h2>
+    <p>Email us at <a href="mailto:support@openlawsvpn.com">support@openlawsvpn.com</a>. Please include:</p>
+    <ul>
+      <li>App version (visible on the <strong>About</strong> tab).</li>
+      <li>iOS version.</li>
+      <li>A description of the problem.</li>
+      <li>The output from the <strong>Log</strong> tab if a connection attempt was made.</li>
+    </ul>
+
+  </main>
+</div>
+
+<footer class="docs-footer">
+  <span>© 2026 openlawsvpn contributors</span>
+  <a href="/">Home</a>
+  <a href="/client.html">Client</a>
+  <a href="/relay.html">Relay</a>
+  <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const sidebar = document.getElementById('sidebar');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggle)
+      sidebar.classList.remove('open');
+  });
+</script>
+</body>
+</html>

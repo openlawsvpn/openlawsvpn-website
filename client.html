@@ -174,19 +174,21 @@ sudo mv openlawsvpn-cli-linux-ppc64le /usr/local/bin/openlawsvpn-cli</code></pre
                   <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
 curl -LO $BASE/openlawsvpn-cli-macos-arm64
 chmod +x openlawsvpn-cli-macos-arm64
+xattr -d com.apple.quarantine openlawsvpn-cli-macos-arm64
 sudo mv openlawsvpn-cli-macos-arm64 /usr/local/bin/openlawsvpn-cli</code></pre>
                 </div>
                 <div class="sub-tab-panel" id="mpanel-amd64">
                   <pre><code>BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
 curl -LO $BASE/openlawsvpn-cli-macos-amd64
 chmod +x openlawsvpn-cli-macos-amd64
+xattr -d com.apple.quarantine openlawsvpn-cli-macos-amd64
 sudo mv openlawsvpn-cli-macos-amd64 /usr/local/bin/openlawsvpn-cli</code></pre>
                 </div>
               </div>
             </div>
             <div class="tab-content" style="border-top:1px solid var(--border)">
               <p class="tab-note">statically linked — run with sudo or grant network extension permissions when prompted</p>
-              <p class="tab-note">macOS may show an unsigned binary warning on first run — right-click → Open to bypass</p>
+              <p class="tab-note">the xattr line removes the Gatekeeper quarantine flag added to files downloaded from the internet</p>
             </div>
           </div>
 

@@ -160,14 +160,17 @@
     <div class="doc-section">
       <h2>What is openlawsvpn?</h2>
       <p>
-        AWS Client VPN needs a client that can complete your organisation’s SAML sign-in. openlawsvpn provides:
-        a pure-Go implementation of the AWS Client VPN protocol, including the full
-        CRV1 SAML challenge-response flow. It works with any SAML 2.0 identity provider
-        AWS supports — Okta, Microsoft Entra ID, Google Workspace, JumpCloud, and others.
+        The official AWS Client VPN desktop client supports Ubuntu Desktop, but does not provide
+        a command-line client or desktop packages for Fedora and other Linux distributions.
+        openlawsvpn fills that gap with a pure-Go implementation of the AWS Client VPN protocol,
+        including the full CRV1 SAML challenge-response flow. It works with any SAML 2.0 identity
+        provider AWS supports — Okta, Microsoft Entra ID, Google Workspace, JumpCloud, and others.
       </p>
       <p>
-        No runtime dependencies. No Electron, no Mono, no JVM. Statically linked binary
-        that runs on any Linux distro or macOS. The mobile apps provide the same AWS Client VPN and SAML/SSO workflow on iPhone, iPad, and Android.
+        The statically linked CLI runs on Linux and macOS across amd64, arm64, and ppc64le where
+        supported; the GTK4 desktop app ships as a Fedora COPR RPM. No Electron, Mono, JVM, or
+        runtime dependencies. The mobile apps provide the same AWS Client VPN and SAML/SSO workflow
+        on iPhone, iPad, and Android.
       </p>
     </div>
 

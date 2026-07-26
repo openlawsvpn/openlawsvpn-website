@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Install openlawsvpn — Linux CLI, GTK4 GUI, macOS, Android App</title>
+  <title>Download openlawsvpn — AWS Client VPN for iPhone, Android, Linux & macOS</title>
   <link rel="canonical" href="https://openlawsvpn.com/client.html">
-  <meta name="description" content="Install openlawsvpn on Linux (static binary or Fedora COPR RPM), macOS (static binary), or Android. Full SAML/SSO for AWS Client VPN. GTK4 libadwaita desktop GUI included. amd64, arm64, ppc64le.">
+  <meta name="description" content="Download openlawsvpn for iPhone and iPad, Android, Linux, or macOS. Connect to AWS Client VPN with SAML/SSO through Okta, Entra ID, Google Workspace, AWS IAM Identity Center, and more.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#1A3A5C">
+  <meta name="apple-itunes-app" content="app-id=6781075635">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/client.html">
-  <meta property="og:title"       content="Install openlawsvpn — Linux CLI, GTK4 GUI, macOS, Android App">
-  <meta property="og:description" content="Install openlawsvpn: static binary for any Linux distro or macOS, Fedora COPR RPM, Android on Play Store, or build from source.">
+  <meta property="og:site_name"   content="openlawsvpn">
+  <meta property="og:title"       content="Download openlawsvpn — AWS Client VPN with SAML/SSO">
+  <meta property="og:description" content="Get openlawsvpn for iPhone and iPad, Android, Linux, or macOS.">
+  <meta property="og:image"       content="https://openlawsvpn.com/assets/how-it-works-poster.jpg">
+  <meta property="og:image:alt"   content="openlawsvpn Relay diagram for AWS Client VPN SAML authentication">
   <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Download openlawsvpn — AWS Client VPN with SAML/SSO">
+  <meta name="twitter:description" content="Get openlawsvpn for iPhone and iPad, Android, Linux, or macOS.">
+  <meta name="twitter:image"      content="https://openlawsvpn.com/assets/how-it-works-poster.jpg">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="stylesheet" href="/style.css">
 </head>
@@ -46,6 +56,7 @@
     <div class="sidebar-section">
       <span class="sidebar-section-label">Apps</span>
       <ul class="sidebar-nav">
+        <li><a href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">iPhone &amp; iPad ↗</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
         <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
       </ul>
@@ -67,7 +78,7 @@
 
     <div class="page-header">
       <h1>Install openlawsvpn</h1>
-      <p class="lead">Linux CLI, GTK4 GUI, macOS CLI, and Android app — open source, zero runtime dependencies.</p>
+      <p class="lead">AWS Client VPN with SAML/SSO for iPhone, iPad, Android, Linux, and macOS.</p>
     </div>
 
     <!-- ── Platforms ── -->
@@ -93,6 +104,13 @@
           <p>Statically linked binary for Apple Silicon (arm64) and Intel (amd64). Download from GitHub Releases.</p>
         </div>
 
+        <a class="product-card" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">
+          <span class="icon">🍎</span>
+          <h3>iPhone &amp; iPad app</h3>
+          <p>Import a profile, authenticate with your organisation’s SAML/SSO provider, and connect through AWS Client VPN.</p>
+          <span class="card-tag">App Store</span>
+        </a>
+
         <a class="product-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
           <span class="icon">📱</span>
           <h3>Android App</h3>
@@ -111,6 +129,7 @@
         <input type="radio" name="install-tab" id="tab-binary" checked>
         <input type="radio" name="install-tab" id="tab-macos">
         <input type="radio" name="install-tab" id="tab-fedora">
+        <input type="radio" name="install-tab" id="tab-ios">
         <input type="radio" name="install-tab" id="tab-android">
         <input type="radio" name="install-tab" id="tab-source">
 
@@ -118,6 +137,7 @@
           <label for="tab-binary">Linux binary</label>
           <label for="tab-macos">macOS</label>
           <label for="tab-fedora">Fedora / RHEL</label>
+          <label for="tab-ios">iPhone &amp; iPad</label>
           <label for="tab-android">Android</label>
           <label for="tab-source">From source</label>
         </div>
@@ -239,6 +259,15 @@ openlawsvpn-gui</code></pre>
               <div style="margin-bottom:16px">
                 <a class="btn btn-primary btn-lg" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Get it on Google Play →</a>
               </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-ios">
+            <div class="tab-content">
+              <div style="margin-bottom:16px">
+                <a class="btn btn-primary btn-lg" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">Download on the App Store →</a>
+              </div>
+              <p class="tab-note">On iPhone or iPad, import the <code>.ovpn</code> profile provided by your organisation, tap Connect, and complete SAML/SSO in the browser.</p>
             </div>
           </div>
 

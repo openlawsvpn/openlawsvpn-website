@@ -3,30 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>openlawsvpn — AWS Client VPN without the proprietary client</title>
+  <title>openlawsvpn — AWS Client VPN with SAML/SSO for iPhone, Android, Linux & macOS</title>
   <link rel="canonical" href="https://openlawsvpn.com/">
-  <meta name="description" content="Open-source AWS Client VPN client with full SAML/SSO support — Okta, Azure AD, Google Workspace. Free CLI &amp; desktop core; openlawsvpn Pro subscription for the packaged app.">
+  <meta name="description" content="Connect to AWS Client VPN with SAML/SSO on iPhone, Android, Linux, and macOS. Supports Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, and other SAML 2.0 providers.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#1A3A5C">
+  <meta name="application-name" content="openlawsvpn">
+  <meta name="apple-itunes-app" content="app-id=6781075635">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/">
-  <meta property="og:title"       content="openlawsvpn — AWS Client VPN without the proprietary client">
-  <meta property="og:description" content="Open-source AWS Client VPN client. SAML/SSO, headless CI/CD via Relay. Free CLI &amp; desktop core; openlawsvpn Pro subscription for the app.">
+  <meta property="og:site_name"   content="openlawsvpn">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:title"       content="openlawsvpn — AWS Client VPN with SAML/SSO">
+  <meta property="og:description" content="AWS Client VPN for iPhone, Android, Linux, and macOS. Sign in with your organisation’s existing SAML/SSO provider.">
+  <meta property="og:image"       content="https://openlawsvpn.com/assets/how-it-works-poster.jpg">
+  <meta property="og:image:alt"   content="openlawsvpn Relay diagram for AWS Client VPN SAML authentication">
   <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="openlawsvpn — AWS Client VPN with SAML/SSO">
+  <meta name="twitter:description" content="Connect to AWS Client VPN from iPhone, Android, Linux, or macOS using your existing SAML/SSO identity provider.">
+  <meta name="twitter:image"      content="https://openlawsvpn.com/assets/how-it-works-poster.jpg">
+  <meta name="twitter:image:alt"  content="openlawsvpn Relay diagram for AWS Client VPN SAML authentication">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "openlawsvpn",
-    "operatingSystem": "Linux, macOS, Android",
-    "applicationCategory": "NetworkingApplication",
-    "offers": { "@type": "AggregateOffer", "lowPrice": "0", "highPrice": "149.99", "priceCurrency": "USD", "offerCount": "3", "url": "https://openlawsvpn.com/pricing" },
-    "url": "https://openlawsvpn.com/",
-    "downloadUrl": "https://github.com/openlawsvpn/go-openlawsvpn/releases/latest",
-    "description": "Open-source AWS Client VPN client with full SAML/SSO support for Linux, macOS, and Android.",
-    "author": { "@type": "Organization", "name": "openlawsvpn contributors", "url": "https://github.com/openlawsvpn" },
-    "softwareVersion": "1.1.3"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://openlawsvpn.com/#organization",
+        "name": "openlawsvpn",
+        "url": "https://openlawsvpn.com/",
+        "email": "contact@openlawsvpn.com",
+        "sameAs": ["https://github.com/openlawsvpn"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://openlawsvpn.com/#website",
+        "url": "https://openlawsvpn.com/",
+        "name": "openlawsvpn",
+        "publisher": { "@id": "https://openlawsvpn.com/#organization" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "openlawsvpn client for iPhone and iPad",
+        "applicationCategory": "NetworkingApplication",
+        "operatingSystem": "iOS",
+        "downloadUrl": "https://apps.apple.com/us/app/openlawsvpn-client/id6781075635",
+        "url": "https://openlawsvpn.com/client.html",
+        "description": "An AWS Client VPN app for iPhone and iPad with SAML/SSO authentication.",
+        "author": { "@id": "https://openlawsvpn.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "openlawsvpn client for Android",
+        "applicationCategory": "NetworkingApplication",
+        "operatingSystem": "Android",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client",
+        "url": "https://openlawsvpn.com/client.html",
+        "description": "An AWS Client VPN app for Android with SAML/SSO authentication.",
+        "author": { "@id": "https://openlawsvpn.com/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does openlawsvpn connect to?",
+            "acceptedAnswer": { "@type": "Answer", "text": "openlawsvpn connects to AWS Client VPN endpoints configured for federated SAML authentication. It is not a consumer VPN service and does not provide a VPN endpoint or an identity-provider account." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which devices are supported?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The client is available for iPhone and iPad on the App Store, Android on Google Play, and as Linux and macOS tooling." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which SSO providers work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "openlawsvpn works with SAML 2.0 identity providers supported by AWS Client VPN, including Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, and JumpCloud." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does openlawsvpn collect VPN credentials or traffic?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Sign-in happens with the user’s identity provider, and VPN traffic goes directly to the AWS Client VPN endpoint selected in the profile." }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -61,6 +127,7 @@
     <div class="sidebar-section">
       <span class="sidebar-section-label">Apps</span>
       <ul class="sidebar-nav">
+        <li><a href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">iPhone &amp; iPad ↗</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
         <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
       </ul>
@@ -76,13 +143,15 @@
 
     <div class="page-header">
       <h1>openlawsvpn</h1>
-      <p class="lead">Open-source AWS Client VPN — full SAML/SSO on Linux, macOS, and Android, headless CI/CD via Relay.</p>
+      <p class="lead">AWS Client VPN with SAML/SSO on iPhone, Android, Linux, and macOS — plus headless CI/CD authentication via Relay.</p>
       <div class="status-badge">
         <span class="dot">●</span>
-        Linux &nbsp;·&nbsp; macOS &nbsp;·&nbsp; Android on Play Store &nbsp;·&nbsp; relay live
+        iPhone &amp; iPad &nbsp;·&nbsp; Android &nbsp;·&nbsp; Linux &nbsp;·&nbsp; macOS &nbsp;·&nbsp; relay live
       </div>
       <div class="btn-cta">
         <a class="btn btn-primary btn-lg" href="/client.html">Install the client</a>
+        <a class="btn btn-secondary" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">Download for iPhone &amp; iPad</a>
+        <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Get it on Google Play</a>
         <a class="btn btn-secondary btn-lg" href="/relay.html">Relay / CI/CD</a>
         <a class="btn btn-secondary" href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub →</a>
       </div>
@@ -91,14 +160,14 @@
     <div class="doc-section">
       <h2>What is openlawsvpn?</h2>
       <p>
-        The official AWS Client VPN client doesn't support Linux. openlawsvpn fills that gap:
+        AWS Client VPN needs a client that can complete your organisation’s SAML sign-in. openlawsvpn provides:
         a pure-Go implementation of the AWS Client VPN protocol, including the full
         CRV1 SAML challenge-response flow. It works with any SAML 2.0 identity provider
         AWS supports — Okta, Microsoft Entra ID, Google Workspace, JumpCloud, and others.
       </p>
       <p>
         No runtime dependencies. No Electron, no Mono, no JVM. Statically linked binary
-        that runs on any Linux distro or macOS.
+        that runs on any Linux distro or macOS. The mobile apps provide the same AWS Client VPN and SAML/SSO workflow on iPhone, iPad, and Android.
       </p>
     </div>
 
@@ -116,6 +185,13 @@
           <span class="icon">🍎</span>
           <h3>macOS client</h3>
           <p>Static CLI binary for Apple Silicon and Intel. No installer needed.</p>
+        </a>
+
+        <a class="product-card" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">
+          <span class="icon">🍎</span>
+          <h3>iPhone &amp; iPad app</h3>
+          <p>Import an AWS Client VPN profile, complete SAML/SSO in the browser, and connect from iOS or iPadOS.</p>
+          <span class="card-tag">App Store</span>
         </a>
 
         <a class="product-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
@@ -139,6 +215,44 @@
         </div>
 
       </div>
+    </div>
+
+    <div class="doc-section" id="features">
+      <h2>AWS Client VPN features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="icon">🔑</span>
+          <h3>SAML / SSO authentication</h3>
+          <p>Connect through AWS Client VPN with Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, JumpCloud, or another AWS-supported SAML 2.0 provider.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">📄</span>
+          <h3>Import your existing profile</h3>
+          <p>Use the <code>.ovpn</code> profile supplied by your organisation. Your VPN endpoint and identity-provider configuration stay under your organisation’s control.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🔒</span>
+          <h3>Privacy-first connection flow</h3>
+          <p>Credentials are entered only on your identity provider’s sign-in page. VPN profiles remain on your device; the apps contain no advertising or analytics SDKs.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">⚙️</span>
+          <h3>Mobile, desktop, and CI/CD</h3>
+          <p>Connect interactively from mobile or desktop, or use Relay to approve SAML authentication for headless CI/CD runners without storing SSO passwords in pipelines.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-section" id="faq">
+      <h2>Frequently asked questions</h2>
+      <h3>What does openlawsvpn connect to?</h3>
+      <p>openlawsvpn connects to AWS Client VPN endpoints configured for federated SAML authentication. It is not a consumer VPN service and does not provide a VPN endpoint or an identity-provider account.</p>
+      <h3>Which devices are supported?</h3>
+      <p>The client is available for iPhone and iPad on the App Store, Android on Google Play, and as Linux and macOS tooling. See <a href="/client.html">client downloads and installation instructions</a>.</p>
+      <h3>Which SSO providers work?</h3>
+      <p>It works with SAML 2.0 identity providers supported by AWS Client VPN, including Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, and JumpCloud.</p>
+      <h3>Does openlawsvpn collect my VPN credentials or traffic?</h3>
+      <p>No. Sign-in happens with your identity provider, and VPN traffic goes directly to the AWS Client VPN endpoint selected in your profile. Read the <a href="/privacy.html">Privacy Policy</a> for details.</p>
     </div>
 
     <div class="doc-section">

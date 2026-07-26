@@ -1,0 +1,33 @@
+# openlawsvpn
+
+> AWS Client VPN with SAML/SSO for iPhone, iPad, Android, Linux, and macOS. It helps organisations connect to their own AWS Client VPN endpoints using their existing SAML 2.0 identity provider.
+
+openlawsvpn is not a consumer VPN service. It does not provide VPN endpoints, identity-provider accounts, or bypass services. Users import the `.ovpn` profile supplied by their organisation and authenticate with the organisation's own identity provider.
+
+## Core capabilities
+
+- Connects to AWS Client VPN endpoints that use federated SAML authentication.
+- Supports AWS-compatible SAML 2.0 identity providers, including Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, and JumpCloud.
+- Provides iPhone/iPad and Android apps, plus Linux and macOS tooling.
+- Includes Relay for human-approved SAML authentication from headless CI/CD runners and servers; it avoids storing SSO credentials in pipelines.
+- Credentials are entered with the identity provider. VPN profiles are stored locally; the apps do not include advertising or analytics SDKs.
+
+## Official pages
+
+- [Overview](https://openlawsvpn.com/): product overview, supported platforms, features, and FAQ.
+- [Client downloads](https://openlawsvpn.com/client.html): App Store, Google Play, Linux, and macOS installation options.
+- [Relay](https://openlawsvpn.com/relay.html): headless AWS Client VPN authentication for CI/CD and servers.
+- [Demo and review guide](https://openlawsvpn.com/demo/): public sandbox profile and test instructions.
+- [Privacy Policy](https://openlawsvpn.com/privacy.html): data handling and permissions.
+- [Support](https://openlawsvpn.com/support): setup and troubleshooting.
+
+## Official app listings
+
+- [openlawsvpn client for iPhone and iPad](https://apps.apple.com/us/app/openlawsvpn-client/id6781075635)
+- [openlawsvpn client for Android](https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client)
+
+## Open-source engine
+
+- [go-openlawsvpn on GitHub](https://github.com/openlawsvpn/go-openlawsvpn)
+
+For editorial or technical questions, contact [contact@openlawsvpn.com](mailto:contact@openlawsvpn.com).

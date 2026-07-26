@@ -1,0 +1,10 @@
+{
+  "name": "openlawsvpn",
+  "short_name": "openlawsvpn",
+  "description": "AWS Client VPN with SAML/SSO for iPhone, Android, Linux, and macOS.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#1A3A5C",
+  "theme_color": "#1A3A5C",
+  "lang": "en-US"
+}

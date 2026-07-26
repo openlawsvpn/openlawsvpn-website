@@ -6,11 +6,16 @@
   <title>Support — openlawsvpn</title>
   <link rel="canonical" href="https://openlawsvpn.com/support">
   <meta name="description" content="Support for the openlawsvpn iOS and Android VPN clients. Troubleshooting, FAQ, and contact information.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#1A3A5C">
+  <meta name="apple-itunes-app" content="app-id=6781075635">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/support">
+  <meta property="og:site_name"   content="openlawsvpn">
   <meta property="og:title"       content="Support — openlawsvpn">
   <meta property="og:description" content="Get help with the openlawsvpn iOS and Android clients. Troubleshooting guides, FAQ, and contact info.">
   <meta name="twitter:card"       content="summary_large_image">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
   <link rel="stylesheet" href="/style.css">
 </head>
@@ -45,6 +50,7 @@
     <div class="sidebar-section">
       <span class="sidebar-section-label">Apps</span>
       <ul class="sidebar-nav">
+        <li><a href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">iPhone &amp; iPad ↗</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android client ↗</a></li>
         <li><a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub ↗</a></li>
       </ul>
@@ -67,7 +73,7 @@
 
     <h1>Support</h1>
 
-    <p>openlawsvpn connects to <strong>AWS Client VPN</strong> endpoints that use <strong>SAML / SSO</strong> authentication. The app does not store passwords — sign-in always happens through your organisation's identity provider in the browser.</p>
+    <p>openlawsvpn connects to <strong>AWS Client VPN</strong> endpoints that use <strong>SAML / SSO</strong> authentication. The app does not store passwords — sign-in always happens through your organisation's identity provider in the browser. Download the <a href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">iPhone and iPad app</a> or the <a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Android app</a>.</p>
 
     <div class="callout">
       <p><strong>Need help?</strong> Email <a href="mailto:support@openlawsvpn.com">support@openlawsvpn.com</a> and include the output from the <strong>Log</strong> tab if possible.</p>
@@ -78,23 +84,23 @@
       <li>An AWS Client VPN endpoint configured for SAML federated authentication.</li>
       <li>A <code>.ovpn</code> profile file from your network administrator (or your organisation's VPN portal).</li>
       <li>An account with your organisation's identity provider (Google Workspace, Okta, AWS IAM Identity Center, Microsoft Entra ID, or any SAML 2.0 provider).</li>
-      <li>An active openlawsvpn subscription (managed via App Store → Settings → Apple Account → Subscriptions).</li>
+      <li>An active openlawsvpn subscription where required by your platform (managed through the store where you purchased it).</li>
     </ul>
 
     <h2>Getting started</h2>
 
-    <h3>1. Subscribe</h3>
-    <p>On first launch the app shows a subscription screen. Start a free trial or subscribe monthly to unlock the main interface. You can manage or cancel the subscription at any time in <strong>Settings → Apple Account → Subscriptions</strong>.</p>
+    <h3>1. Get the app</h3>
+    <p>Download openlawsvpn from the <a href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">App Store</a> for iPhone and iPad or <a href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Google Play</a> for Android. Any subscription, trial, or payment is managed by the store on the device.</p>
 
     <h3>2. Add a profile</h3>
-    <p>Save the <code>.ovpn</code> file your administrator provided to the Files app (or AirDrop it to your device). Open openlawsvpn, go to the <strong>Connect</strong> tab, tap <strong>+ Add Profile</strong>, and select the file. The profile appears in the list.</p>
+    <p>Save the <code>.ovpn</code> file your administrator provided to your device. Open openlawsvpn, go to the <strong>Connect</strong> tab, tap <strong>+ Add Profile</strong> on iPhone or iPad, or <strong>Import .ovpn File</strong> on Android, then select the file. The profile appears in the list.</p>
 
     <h3>3. Connect</h3>
     <ol>
       <li>Tap <strong>Connect</strong> on the profile. The row shows <em>Waiting for SAML…</em>.</li>
-      <li>The first time, iOS asks permission to open your identity provider for sign-in — tap <strong>Continue</strong>.</li>
+      <li>The first time, the operating system asks permission to create a VPN connection; approve it. On iPhone and iPad, also allow the app to open your identity provider for sign-in.</li>
       <li>Sign in on your identity provider's page. After sign-in, the browser may show "This form is not secure — Submit?" — tap <strong>Submit</strong>. This is the secure token being returned to the app over your device's private loopback address (<code>127.0.0.1</code>); nothing leaves your device.</li>
-      <li>The row shows <strong>● Connected</strong> and iOS shows the VPN badge in the status bar.</li>
+      <li>The row shows <strong>● Connected</strong> and the operating system displays an active VPN indicator.</li>
     </ol>
 
     <h3>4. Disconnect</h3>
@@ -152,7 +158,7 @@
     <p>Email us at <a href="mailto:support@openlawsvpn.com">support@openlawsvpn.com</a>. Please include:</p>
     <ul>
       <li>App version (visible on the <strong>About</strong> tab).</li>
-      <li>iOS version.</li>
+      <li>Device model, operating-system version, and whether you are using iPhone/iPad or Android.</li>
       <li>A description of the problem.</li>
       <li>The output from the <strong>Log</strong> tab if a connection attempt was made.</li>
     </ul>

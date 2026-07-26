@@ -406,6 +406,7 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 #tab-binary:checked  ~ .tab-labels label[for="tab-binary"],
 #tab-macos:checked   ~ .tab-labels label[for="tab-macos"],
 #tab-fedora:checked  ~ .tab-labels label[for="tab-fedora"],
+#tab-ios:checked     ~ .tab-labels label[for="tab-ios"],
 #tab-android:checked ~ .tab-labels label[for="tab-android"],
 #tab-source:checked  ~ .tab-labels label[for="tab-source"] {
   color: var(--text); border-bottom-color: var(--accent);
@@ -414,6 +415,7 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 #tab-binary:checked  ~ .tab-panels #panel-binary,
 #tab-macos:checked   ~ .tab-panels #panel-macos,
 #tab-fedora:checked  ~ .tab-panels #panel-fedora,
+#tab-ios:checked     ~ .tab-panels #panel-ios,
 #tab-android:checked ~ .tab-panels #panel-android,
 #tab-source:checked  ~ .tab-panels #panel-source { display: block; }
 

@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — openlawsvpn</title>
-  <link rel="canonical" href="https://openlawsvpn.com/privacy.html">
+  <link rel="canonical" href="https://openlawsvpn.com/privacy/">
   <meta name="description" content="Privacy policy for the openlawsvpn iOS and Android apps and VPN clients. No data collection, no telemetry, no tracking.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#1A3A5C">
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://openlawsvpn.com/privacy.html">
+  <meta property="og:url"         content="https://openlawsvpn.com/privacy/">
   <meta property="og:site_name"   content="openlawsvpn">
   <meta property="og:title"       content="Privacy Policy — openlawsvpn">
   <meta property="og:description" content="The openlawsvpn app collects no personal data, no analytics, no telemetry. VPN traffic goes directly to your own AWS endpoint.">
@@ -33,16 +33,16 @@
       <span class="sidebar-section-label">Getting started</span>
       <ul class="sidebar-nav">
         <li><a href="/">Overview</a></li>
-        <li><a href="/client.html">Client install</a></li>
+        <li><a href="/client/">Client install</a></li>
       </ul>
     </div>
 
     <div class="sidebar-section">
       <span class="sidebar-section-label">Relay</span>
       <ul class="sidebar-nav">
-        <li><a href="/relay.html">How it works</a></li>
-        <li><a href="/relay.html#demo">Try the demo</a></li>
-        <li><a href="/relay.html#ci">CI/CD setup</a></li>
+        <li><a href="/relay/">How it works</a></li>
+        <li><a href="/relay/#demo">Try the demo</a></li>
+        <li><a href="/relay/#ci">CI/CD setup</a></li>
       </ul>
     </div>
 
@@ -56,8 +56,8 @@
     </div>
 
     <div class="sidebar-footer">
-      <a href="/privacy.html" style="color:var(--muted)">Privacy</a> &nbsp;·&nbsp;
-      <a href="/terms.html" style="color:var(--muted)">Terms</a> &nbsp;·&nbsp;
+      <a href="/privacy/" style="color:var(--muted)">Privacy</a> &nbsp;·&nbsp;
+      <a href="/terms/" style="color:var(--muted)">Terms</a> &nbsp;·&nbsp;
       <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a>
     </div>
   </nav>
@@ -93,7 +93,7 @@
     <ul>
       <li><strong>VPN tunnel traffic</strong> — encrypted and routed directly to your organization's AWS Client VPN endpoint. openlawsvpn servers are never in the data path.</li>
       <li><strong>SAML authentication</strong> — your identity provider's login page opens in a system browser (a separate process). The app receives only the resulting SAML token; it never sees your credentials or the login page content.</li>
-      <li><strong>Demo endpoint (openlawsvpn client)</strong> — a publicly accessible demo VPN endpoint is available at <code>52.50.164.151</code> for app review and testing purposes. It accepts certificate-auth connections using the profile at <a href="/demo/demo-client.ovpn">demo/demo-client.ovpn</a>. No user data is stored on this endpoint.</li>
+      <li><strong>Demo endpoint (openlawsvpn client)</strong> — a publicly accessible, read-only demo VPN endpoint is available for app review and testing. It uses the SAML/SSO profile at <a href="/demo/saml-client.ovpn">demo/saml-client.ovpn</a>. No user data is stored on this endpoint.</li>
       <li><strong>Relay mode (optional)</strong> — if you use the relay feature, only the data required by its nature to deliver VPN auth to the remote agent transits the openlawsvpn relay service. This data is not stored beyond the duration of the session (60-second TTL). Direct connections never touch openlawsvpn servers.</li>
     </ul>
 
@@ -141,8 +141,8 @@
 <footer class="docs-footer">
   <span>© 2026 openlawsvpn contributors</span>
   <a href="/">Home</a>
-  <a href="/client.html">Client</a>
-  <a href="/relay.html">Relay</a>
+  <a href="/client/">Client</a>
+  <a href="/relay/">Relay</a>
   <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
 </footer>
 

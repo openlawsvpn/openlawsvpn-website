@@ -15,10 +15,10 @@ openlawsvpn is not a consumer VPN service. It does not provide VPN endpoints, id
 ## Official pages
 
 - [Overview](https://openlawsvpn.com/): product overview, supported platforms, features, and FAQ.
-- [Client downloads](https://openlawsvpn.com/client.html): App Store, Google Play, Linux, and macOS installation options.
-- [Relay](https://openlawsvpn.com/relay.html): headless AWS Client VPN authentication for CI/CD and servers.
+- [Client downloads](https://openlawsvpn.com/client/): App Store, Google Play, Linux, and macOS installation options.
+- [Relay](https://openlawsvpn.com/relay/): headless AWS Client VPN authentication for CI/CD and servers.
 - [Demo and review guide](https://openlawsvpn.com/demo/): public sandbox profile and test instructions.
-- [Privacy Policy](https://openlawsvpn.com/privacy.html): data handling and permissions.
+- [Privacy Policy](https://openlawsvpn.com/privacy/): data handling and permissions.
 - [Support](https://openlawsvpn.com/support): setup and troubleshooting.
 
 ## Official app listings

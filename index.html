@@ -53,7 +53,7 @@
         "applicationCategory": "NetworkingApplication",
         "operatingSystem": "iOS",
         "downloadUrl": "https://apps.apple.com/us/app/openlawsvpn-client/id6781075635",
-        "url": "https://openlawsvpn.com/client.html",
+        "url": "https://openlawsvpn.com/client/",
         "description": "An AWS Client VPN app for iPhone and iPad with SAML/SSO authentication.",
         "author": { "@id": "https://openlawsvpn.com/#organization" }
       },
@@ -63,7 +63,7 @@
         "applicationCategory": "NetworkingApplication",
         "operatingSystem": "Android",
         "downloadUrl": "https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client",
-        "url": "https://openlawsvpn.com/client.html",
+        "url": "https://openlawsvpn.com/client/",
         "description": "An AWS Client VPN app for Android with SAML/SSO authentication.",
         "author": { "@id": "https://openlawsvpn.com/#organization" }
       },
@@ -111,16 +111,16 @@
       <span class="sidebar-section-label">Getting started</span>
       <ul class="sidebar-nav">
         <li><a href="/" class="active">Overview</a></li>
-        <li><a href="/client.html">Client install</a></li>
+        <li><a href="/client/">Client install</a></li>
       </ul>
     </div>
 
     <div class="sidebar-section">
       <span class="sidebar-section-label">Relay</span>
       <ul class="sidebar-nav">
-        <li><a href="/relay.html">How it works</a></li>
-        <li><a href="/relay.html#demo">Try the demo</a></li>
-        <li><a href="/relay.html#ci">CI/CD setup</a></li>
+        <li><a href="/relay/">How it works</a></li>
+        <li><a href="/relay/#demo">Try the demo</a></li>
+        <li><a href="/relay/#ci">CI/CD setup</a></li>
       </ul>
     </div>
 
@@ -134,7 +134,7 @@
     </div>
 
     <div class="sidebar-footer">
-      <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp;
+      <a href="/privacy/">Privacy</a> &nbsp;·&nbsp;
       <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a>
     </div>
   </nav>
@@ -149,10 +149,10 @@
         iPhone &amp; iPad &nbsp;·&nbsp; Android &nbsp;·&nbsp; Linux &nbsp;·&nbsp; macOS &nbsp;·&nbsp; relay live
       </div>
       <div class="btn-cta">
-        <a class="btn btn-primary btn-lg" href="/client.html">Install the client</a>
+        <a class="btn btn-primary btn-lg" href="/client/">Install the client</a>
         <a class="btn btn-secondary" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">Download for iPhone &amp; iPad</a>
         <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">Get it on Google Play</a>
-        <a class="btn btn-secondary btn-lg" href="/relay.html">Relay / CI/CD</a>
+        <a class="btn btn-secondary btn-lg" href="/relay/">Relay / CI/CD</a>
         <a class="btn btn-secondary" href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub →</a>
       </div>
     </div>
@@ -175,13 +175,13 @@
       <h2>Products</h2>
       <div class="product-grid">
 
-        <a class="product-card" href="/client.html">
+        <a class="product-card" href="/client/">
           <span class="icon">🐧</span>
           <h3>Linux client</h3>
           <p>Static CLI binary and GTK4 GUI. Fedora COPR RPM. amd64, arm64, ppc64le.</p>
         </a>
 
-        <a class="product-card" href="/client.html#macos">
+        <a class="product-card" href="/client/#macos">
           <span class="icon">🍎</span>
           <h3>macOS client</h3>
           <p>Static CLI binary for Apple Silicon and Intel. No installer needed.</p>
@@ -201,7 +201,7 @@
           <span class="card-tag">Play Store</span>
         </a>
 
-        <a class="product-card" href="/relay.html">
+        <a class="product-card" href="/relay/">
           <span class="icon">⚙️</span>
           <h3>Relay service</h3>
           <p>Headless VPN auth for CI/CD runners and servers. Human approves SAML from phone. Public demo — no account required.</p>
@@ -248,11 +248,11 @@
       <h3>What does openlawsvpn connect to?</h3>
       <p>openlawsvpn connects to AWS Client VPN endpoints configured for federated SAML authentication. It is not a consumer VPN service and does not provide a VPN endpoint or an identity-provider account.</p>
       <h3>Which devices are supported?</h3>
-      <p>The client is available for iPhone and iPad on the App Store, Android on Google Play, and as Linux and macOS tooling. See <a href="/client.html">client downloads and installation instructions</a>.</p>
+      <p>The client is available for iPhone and iPad on the App Store, Android on Google Play, and as Linux and macOS tooling. See <a href="/client/">client downloads and installation instructions</a>.</p>
       <h3>Which SSO providers work?</h3>
       <p>It works with SAML 2.0 identity providers supported by AWS Client VPN, including Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, and JumpCloud.</p>
       <h3>Does openlawsvpn collect my VPN credentials or traffic?</h3>
-      <p>No. Sign-in happens with your identity provider, and VPN traffic goes directly to the AWS Client VPN endpoint selected in your profile. Read the <a href="/privacy.html">Privacy Policy</a> for details.</p>
+      <p>No. Sign-in happens with your identity provider, and VPN traffic goes directly to the AWS Client VPN endpoint selected in your profile. Read the <a href="/privacy/">Privacy Policy</a> for details.</p>
     </div>
 
     <div class="doc-section">
@@ -279,7 +279,7 @@
     <div class="doc-section">
       <h2>Quick start</h2>
       <div class="callout info">
-        <p>For full install options including Fedora COPR RPM, GTK4 GUI, macOS, and Android — see the <a href="/client.html">Client install page</a>.</p>
+        <p>For full install options including Fedora COPR RPM, GTK4 GUI, macOS, and Android — see the <a href="/client/">Client install page</a>.</p>
       </div>
       <pre class="code-block">BASE=https://github.com/openlawsvpn/go-openlawsvpn/releases/latest/download
 curl -LO $BASE/openlawsvpn-cli-linux-amd64
@@ -294,9 +294,9 @@ sudo openlawsvpn-cli --config ~/Downloads/client-config.ovpn</pre>
 <footer class="docs-footer">
   <span>© 2026 openlawsvpn contributors</span>
   <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
-  <a href="/client.html">Client</a>
-  <a href="/relay.html">Relay</a>
-  <a href="/privacy.html">Privacy</a>
+  <a href="/client/">Client</a>
+  <a href="/relay/">Relay</a>
+  <a href="/privacy/">Privacy</a>
   <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a>
 </footer>
 

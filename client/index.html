@@ -25,7 +25,7 @@
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body class="client-page">
 
 <button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
 
@@ -77,8 +77,25 @@
     </div>
 
     <div class="page-header">
-      <h1>Install openlawsvpn</h1>
-      <p class="lead">AWS Client VPN with SAML/SSO for iPhone, iPad, Android, Linux, and macOS.</p>
+      <span class="eyebrow"><span class="eyebrow-dot"></span>Choose your device</span>
+      <h1>Get openlawsvpn</h1>
+      <p class="lead">AWS Client VPN with SAML/SSO for iPhone, iPad, Android, Linux, and macOS. Start with the app you use every day.</p>
+      <div class="mobile-apps client-apps" aria-label="Download the openlawsvpn mobile app">
+        <a class="mobile-app-card ios" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">
+          <span class="platform-icon platform-icon-lg" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="13" y="4" width="22" height="40" rx="5" stroke="currentColor" stroke-width="2.5"/><path d="M21 9h6M22.5 38.5h3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M18 17h12M18 23h8M18 29h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg>
+          </span>
+          <span class="app-card-copy"><small>Download on the</small><strong>App Store</strong><span>For iPhone &amp; iPad</span></span>
+          <span class="app-card-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="mobile-app-card android" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
+          <span class="platform-icon platform-icon-lg" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M14 22a10 10 0 0 1 20 0v11H14V22Z" stroke="currentColor" stroke-width="2.5"/><path d="m17 14-3-4m17 4 3-4M12 23v9m24-9v9M18 33v6m12-6v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="22" r="1.5" fill="currentColor"/><circle cx="28" cy="22" r="1.5" fill="currentColor"/></svg>
+          </span>
+          <span class="app-card-copy"><small>Get it on</small><strong>Google Play</strong><span>For Android</span></span>
+          <span class="app-card-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
 
     <!-- ── Platforms ── -->
@@ -86,37 +103,47 @@
       <h2>Platforms</h2>
       <div class="product-grid">
 
-        <div class="product-card">
-          <span class="icon">🐧</span>
-          <h3>Linux CLI</h3>
-          <p>Statically linked Go CLI for Linux distributions beyond the official Ubuntu Desktop client. No Mono, Java, Electron, or runtime. amd64, arm64, ppc64le.</p>
-        </div>
-
-        <div class="product-card">
-          <span class="icon">🖥️</span>
-          <h3>GTK4 Desktop GUI</h3>
-          <p>libadwaita app for GNOME — profile importer, one-click connect, tray icon. Ships as a Fedora COPR RPM.</p>
-        </div>
-
-        <div class="product-card" id="macos">
-          <span class="icon">🍎</span>
-          <h3>macOS CLI</h3>
-          <p>Statically linked binary for Apple Silicon (arm64) and Intel (amd64). Download from GitHub Releases.</p>
-        </div>
-
-        <a class="product-card" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">
-          <span class="icon">🍎</span>
+        <a class="product-card platform-card" href="https://apps.apple.com/us/app/openlawsvpn-client/id6781075635" rel="noopener">
+          <span class="platform-icon ios" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="11" y="3" width="18" height="34" rx="4" stroke="currentColor" stroke-width="2.3"/><path d="M17 8h6M18.5 32h3" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>
+          </span>
           <h3>iPhone &amp; iPad app</h3>
           <p>Import a profile, authenticate with your organisation’s SAML/SSO provider, and connect through AWS Client VPN.</p>
           <span class="card-tag">App Store</span>
         </a>
 
-        <a class="product-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
-          <span class="icon">📱</span>
+        <a class="product-card platform-card" href="https://play.google.com/store/apps/details?id=com.openlawsvpn.android.client" rel="noopener">
+          <span class="platform-icon android" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M8 19a12 12 0 0 1 24 0v12H8V19Z" stroke="currentColor" stroke-width="2.3"/><path d="m12 10-3-4m19 4 3-4M6 20v9m28-9v9M13 31v5m14-5v5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><circle cx="15" cy="19" r="1.3" fill="currentColor"/><circle cx="25" cy="19" r="1.3" fill="currentColor"/></svg>
+          </span>
           <h3>Android App</h3>
           <p>Pure Go VPN core via gomobile — no NDK, no JNI glue. SAML authentication in-app via Chrome Custom Tab.</p>
           <span class="card-tag">Play Store</span>
         </a>
+
+        <div class="product-card platform-card">
+          <span class="platform-icon linux" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="7" width="32" height="26" rx="3" stroke="currentColor" stroke-width="2.3"/><path d="m11 15 5 5-5 5m9 0h8" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Linux CLI</h3>
+          <p>Statically linked Go CLI for Linux distributions beyond the official Ubuntu Desktop client. No Mono, Java, Electron, or runtime. amd64, arm64, ppc64le.</p>
+        </div>
+
+        <div class="product-card platform-card">
+          <span class="platform-icon linux" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="6" width="30" height="22" rx="3" stroke="currentColor" stroke-width="2.3"/><path d="M14 34h12m-6-6v6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>
+          </span>
+          <h3>GTK4 Desktop GUI</h3>
+          <p>libadwaita app for GNOME — profile importer, one-click connect, tray icon. Ships as a Fedora COPR RPM.</p>
+        </div>
+
+        <div class="product-card platform-card" id="macos">
+          <span class="platform-icon macos" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="6" width="30" height="22" rx="3" stroke="currentColor" stroke-width="2.3"/><path d="M14 34h12m-6-6v6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>
+          </span>
+          <h3>macOS CLI</h3>
+          <p>Statically linked binary for Apple Silicon (arm64) and Intel (amd64). Download from GitHub Releases.</p>
+        </div>
 
       </div>
     </div>

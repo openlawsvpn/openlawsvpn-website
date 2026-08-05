@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — openlawsvpn</title>
   <link rel="canonical" href="https://openlawsvpn.com/privacy/">
-  <meta name="description" content="Privacy policy for the openlawsvpn iOS and Android apps and VPN clients. No data collection, no telemetry, no tracking.">
+  <meta name="description" content="Privacy policy for openlawsvpn apps and website measurement. The apps collect no telemetry; website analytics and ads require consent.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#1A3A5C">
   <meta property="og:type"        content="website">
@@ -17,6 +17,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/consent.css">
+  <script src="/consent.js"></script>
 </head>
 <body>
 
@@ -71,10 +73,10 @@
     </div>
 
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: May 24, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn client (iOS &amp; Android), openlawsvpn relay (Android), and all other openlawsvpn apps and clients</p>
+    <p class="effective">Effective date: August 5, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn.com and openlawsvpn client (iOS &amp; Android), relay (Android), and other apps and clients</p>
 
     <div class="callout">
-      <p><strong>Short version:</strong> The openlawsvpn apps do not collect, store, or transmit any personal data to openlawsvpn servers. In direct mode, your VPN traffic goes directly to your own AWS endpoint. Relay mode requires minimal data to transit the relay service by its nature — see section 3 for details.</p>
+      <p><strong>Short version:</strong> The openlawsvpn apps do not collect, store, or transmit personal data to openlawsvpn servers. In direct mode, your VPN traffic goes directly to your own AWS endpoint. This website uses optional analytics and advertising measurement only when you consent — see section 6.</p>
     </div>
 
     <h2>1. What we collect</h2>
@@ -101,10 +103,21 @@
     <p><strong>Direct connections</strong> — the app connects directly to your AWS endpoint. No openlawsvpn infrastructure is involved and no connection data is logged by us.</p>
     <p><strong>Relay mode (optional)</strong> — relay traffic passes through the openlawsvpn relay service (AWS API Gateway). Standard access logs are retained for 30 days in AWS CloudWatch for security and abuse-prevention purposes. These logs may include your IP address, timestamp, and request metadata. They are not sold or shared with third parties and are deleted automatically after 30 days.</p>
 
-    <h2>5. Third-party services</h2>
+    <h2>5. Third-party services in the apps</h2>
     <p>The app does not integrate any third-party analytics, advertising, crash-reporting, or data-processing services.</p>
 
-    <h2>6. Permissions</h2>
+    <h2>6. Website analytics and advertising</h2>
+    <p>When you visit <strong>openlawsvpn.com</strong>, we ask for your permission before loading optional measurement services. These services are not part of the mobile or desktop apps.</p>
+    <ul>
+      <li><strong>Google Analytics</strong> — helps us understand aggregated website visits and which pages are useful.</li>
+      <li><strong>Google Ads</strong> — helps us measure whether visits from our advertising campaigns reach the website.</li>
+      <li><strong>GoatCounter</strong> — provides lightweight website visit statistics.</li>
+    </ul>
+    <p>We use Google Consent Mode in basic mode: Google Analytics, Google Ads, and GoatCounter are not loaded until you opt in. You may accept all optional measurement, reject it, or choose categories separately. Your choice is saved in local storage for up to 180 days and can be changed any time through the <strong>Privacy choices</strong> button on the website.</p>
+    <p>If you enable analytics or advertising measurement, the relevant provider may receive technical information from your browser, such as pages viewed, referring URL, browser and device information, approximate location inferred from IP address, and campaign identifiers. Google processes this information under its <a href="https://policies.google.com/privacy" rel="noopener">Privacy Policy</a>. We do not enable personalised advertising unless you separately consent to it.</p>
+    <p>Our legal basis for these optional services is your consent. You can withdraw consent at any time using the privacy controls described above; withdrawing consent does not affect the lawfulness of processing before withdrawal.</p>
+
+    <h2>7. Permissions</h2>
     <p>Each client requests only the permissions required to operate as a VPN client.</p>
     <p><strong>On iOS:</strong></p>
     <ul>
@@ -122,17 +135,17 @@
     <p><strong>On Linux</strong> the CLI and GUI require no special permissions beyond the network capabilities needed to create a tunnel interface (CAP_NET_ADMIN+CAP_NET_RAW or run as root).</p>
     <p>No location, contacts, camera, microphone, or unnecessary storage permissions are requested on any platform.</p>
 
-    <h2>7. In-App Purchases (iOS)</h2>
+    <h2>8. In-App Purchases (iOS)</h2>
     <p>The iOS app offers a monthly subscription processed entirely by Apple through the App Store. openlawsvpn does not receive or store your payment information. We receive only a signal from Apple's StoreKit framework indicating whether a valid subscription entitlement is active on your device. No financial data is transmitted to openlawsvpn servers as part of the purchase process.</p>
     <p>For questions about billing, cancellation, or refunds, visit <a href="https://support.apple.com/billing" rel="noopener">Apple's billing support</a>.</p>
 
-    <h2>8. Children's privacy</h2>
+    <h2>9. Children's privacy</h2>
     <p>The app is not directed at children under 13 and does not knowingly collect information from children.</p>
 
-    <h2>9. Changes to this policy</h2>
+    <h2>10. Changes to this policy</h2>
     <p>If this policy changes materially, the updated version will be posted at this URL with a revised effective date. The app is open source — all changes are visible in the <a href="https://github.com/openlawsvpn/go-openlawsvpn">public repository</a>.</p>
 
-    <h2>10. Contact</h2>
+    <h2>11. Contact</h2>
     <p>Questions about this policy: <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a></p>
 
   </main>

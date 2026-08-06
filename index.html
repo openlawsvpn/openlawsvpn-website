@@ -352,14 +352,6 @@ sudo openlawsvpn-cli --config ~/Downloads/client-config.ovpn</pre>
   <a href="mailto:contact@openlawsvpn.com">contact@openlawsvpn.com</a>
 </footer>
 
-<script>
-  const toggle = document.getElementById('navToggle');
-  const sidebar = document.getElementById('sidebar');
-  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
-  document.addEventListener('click', e => {
-    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggle)
-      sidebar.classList.remove('open');
-  });
-</script>
+<script defer src="/navigation.js"></script>
 </body>
 </html>

@@ -176,14 +176,6 @@
   <a href="https://github.com/openlawsvpn/go-openlawsvpn" rel="noopener">GitHub</a>
 </footer>
 
-<script>
-  const toggle = document.getElementById('navToggle');
-  const sidebar = document.getElementById('sidebar');
-  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
-  document.addEventListener('click', e => {
-    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggle)
-      sidebar.classList.remove('open');
-  });
-</script>
+<script defer src="/navigation.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "name": "openlawsvpn-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^5.15.5"
+  }
+}

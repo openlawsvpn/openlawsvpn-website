@@ -1,0 +1,71 @@
+/* Language switcher. It is deliberately independent of page routes. */
+.language-control {
+  position: fixed;
+  z-index: 300;
+  top: 14px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 8px 6px 10px;
+  color: #8b949e;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  font: 12px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.language-control svg { width: 15px; height: 15px; color: #58a6ff; }
+.language-control select {
+  min-width: 148px;
+  cursor: pointer;
+  color: #e6edf3;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+}
+/* Native select menus commonly use a light system popup. */
+.language-control select option {
+  color: #0d1117;
+  background: #ffffff;
+}
+.language-control select:focus-visible,
+.language-notice button:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 2px;
+}
+.language-notice {
+  position: fixed;
+  z-index: 301;
+  top: 62px;
+  right: 18px;
+  width: min(340px, calc(100vw - 36px));
+  padding: 13px;
+  color: #e6edf3;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .28);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.language-notice p { margin: 0 0 10px; }
+.language-notice-actions { display: flex; gap: 8px; }
+.language-notice button {
+  padding: 6px 9px;
+  cursor: pointer;
+  color: #e6edf3;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+  font: inherit;
+  font-weight: 600;
+}
+.language-notice button:first-child { color: #0d1117; background: #f78166; border-color: #f78166; }
+.language-notice button:hover { border-color: #58a6ff; }
+.language-notice button:first-child:hover { background: #ff9a7e; border-color: #ff9a7e; }
+.language-control .language-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+@media (max-width: 768px) {
+  .language-control { top: 14px; right: 16px; }
+  .language-notice { top: 60px; right: 16px; width: min(330px, calc(100vw - 32px)); }
+}

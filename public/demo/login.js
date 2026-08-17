@@ -1,4 +1,4 @@
-const DEMO_TOKEN = 'DEMO2026OPENLAWS';
+const DEMO_TOKEN = 'PHNhbWxwOlJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoyLjA6cHJvdG9jb2wiIElEPSJvcGVubGF3c3Zwbi1kZW1vIj48L3NhbWxwOlJlc3BvbnNlPg==';
 const DEMO_USER = 'reviewer';
 const DEMO_PASS = 'Demo2026!';
 const ACS_URL = 'http://127.0.0.1:35001/';

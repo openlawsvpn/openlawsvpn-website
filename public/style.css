@@ -686,6 +686,7 @@ pre code { background: none; border: none; padding: 0; color: inherit; font-size
 }
 .docs-footer a { color: var(--subtle); }
 .docs-footer a:hover { color: var(--muted); text-decoration: none; }
+.footer-disclaimer { flex-basis: 100%; color: var(--subtle); line-height: 1.5; }
 
 /* ── Privacy ── */
 .content h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }

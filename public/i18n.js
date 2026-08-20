@@ -6,6 +6,7 @@
   'use strict';
 
   const storageKey = 'openlawsvpn-language-v1';
+  const languageParameter = 'lang';
   const supported = new Set(['en', 'de', 'fr', 'es', 'it', 'pt-BR', 'pl', 'ja', 'ko']);
   const english = 'en';
   const german = 'de';
@@ -391,6 +392,11 @@
     }
   }
 
+  function languageFromQuery() {
+    const value = new URLSearchParams(window.location.search).get(languageParameter);
+    return value && supported.has(value) ? value : null;
+  }
+
   function saveLanguage(language) {
     try { localStorage.setItem(storageKey, language); } catch (_) { /* Functional preference; page still works without storage. */ }
   }
@@ -431,12 +437,34 @@
     document.querySelector('meta[name="description"]')?.setAttribute('content', page.description);
   }
 
+  function updateCanonicalUrl(language) {
+    // Only the three translated landing pages have language-specific metadata
+    // and hreflang annotations. Keep documentation and legal-page canonicals
+    // stable until they have complete translations of their own.
+    if (!metadata[german]?.[location.pathname]) return;
+
+    const url = new URL(window.location.href);
+    url.hash = '';
+    url.search = language === english ? '' : `?${languageParameter}=${encodeURIComponent(language)}`;
+    const canonicalUrl = url.toString();
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+  }
+
+  function languageUrl(language) {
+    const url = new URL(window.location.href);
+    if (language === english) url.searchParams.delete(languageParameter);
+    else url.searchParams.set(languageParameter, language);
+    return `${url.pathname}${url.search}${url.hash}`;
+  }
+
   function applyLanguage(language) {
     document.documentElement.lang = language;
     if (language !== english) {
       translateText(language);
       updateMetadata(language);
     }
+    updateCanonicalUrl(language);
   }
 
   function createSwitcher(language, showSuggestion) {
@@ -450,7 +478,7 @@
     select.value = language;
     select.addEventListener('change', () => {
       saveLanguage(select.value);
-      location.reload();
+      location.assign(languageUrl(select.value));
     });
     document.body.append(control);
 
@@ -464,13 +492,13 @@
       const language = event.target.closest('[data-language]')?.dataset.language;
       if (!language) return;
       saveLanguage(language);
-      location.reload();
+      location.assign(languageUrl(language));
     });
     document.body.append(notice);
   }
 
   function init() {
-    const selected = savedLanguage() || english;
+    const selected = languageFromQuery() || savedLanguage() || english;
     applyLanguage(selected);
     const detected = preferredLanguage();
     createSwitcher(selected, !savedLanguage() && detected !== english ? detected : null);

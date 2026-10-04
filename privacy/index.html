@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — openlawsvpn</title>
   <link rel="canonical" href="https://openlawsvpn.com/privacy/">
-  <meta name="description" content="Privacy policy for openlawsvpn apps and website measurement. The apps collect no telemetry; website analytics and ads require consent.">
+  <meta name="description" content="Privacy policy for openlawsvpn apps, Android crash diagnostics, and consent-based website measurement.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#1A3A5C">
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://openlawsvpn.com/privacy/">
   <meta property="og:site_name"   content="openlawsvpn">
   <meta property="og:title"       content="Privacy Policy — openlawsvpn">
-  <meta property="og:description" content="The openlawsvpn app collects no personal data, no analytics, no telemetry. VPN traffic goes directly to your own AWS endpoint.">
+  <meta property="og:description" content="The Android client sends limited crash diagnostics through Firebase Crashlytics. It does not include usage analytics or advertising SDKs, and VPN traffic goes directly to your own AWS endpoint.">
   <meta name="twitter:card"       content="summary_large_image">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f78166'>|</text></svg>">
@@ -73,14 +73,14 @@
     </div>
 
     <h1>Privacy Policy</h1>
-    <p class="effective">Effective date: August 5, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn.com and openlawsvpn client (iOS &amp; Android), relay (Android), and other apps and clients</p>
+    <p class="effective">Effective date: October 4, 2026 &nbsp;·&nbsp; Applies to: openlawsvpn.com and openlawsvpn client (iOS &amp; Android), relay (Android), and other apps and clients</p>
 
     <div class="callout">
-      <p><strong>Short version:</strong> The openlawsvpn apps do not collect, store, or transmit personal data to openlawsvpn servers. In direct mode, your VPN traffic goes directly to your own AWS endpoint. This website uses optional analytics and advertising measurement only when you consent — see section 6.</p>
+      <p><strong>Short version:</strong> The Android client sends limited technical crash diagnostics to Firebase Crashlytics so we can identify and fix stability problems. The apps do not include advertising or usage-analytics SDKs, and VPN profiles, credentials, connection logs, and tunnel traffic are not intentionally included in crash reports. In direct mode, your VPN traffic goes directly to your own AWS endpoint. This website uses optional analytics and advertising measurement only when you consent — see section 6.</p>
     </div>
 
     <h2>1. What we collect</h2>
-    <p><strong>Nothing.</strong> The app does not collect any personal information, usage analytics, crash reports, or telemetry. There are no SDKs in the app that phone home.</p>
+    <p>The apps do not ask users to create an openlawsvpn account and do not intentionally collect names, email addresses, payment information, or usage analytics. The Android client automatically sends limited crash reports and diagnostic data through Firebase Crashlytics. This includes crash stack traces or native minidumps, app version, device model, operating-system information, diagnostic state, and an installation identifier. This information is used only to monitor app stability and diagnose and fix crashes.</p>
 
     <h2>2. Data stored on your device</h2>
     <p>The following data is stored locally on your device only:</p>
@@ -88,13 +88,14 @@
       <li><strong>VPN profiles (.ovpn files)</strong> — stored in app-private storage with restricted permissions (mode 600 on Linux; excluded from Android Auto Backup on Android).</li>
       <li><strong>Connection logs</strong> — held in memory while the app is open; cleared when the process ends. Never written to disk.</li>
     </ul>
-    <p>No data from any client is accessible to other apps or synchronized to any cloud service.</p>
+    <p>VPN profiles and connection logs are not synchronized to any cloud service. Android crash diagnostics are transmitted separately as described in sections 3–5.</p>
 
     <h2>3. Data transmitted</h2>
     <p>The only network traffic initiated by the apps is:</p>
     <ul>
       <li><strong>VPN tunnel traffic</strong> — encrypted and routed directly to your organization's AWS Client VPN endpoint. openlawsvpn servers are never in the data path.</li>
       <li><strong>SAML authentication</strong> — your identity provider's login page opens in a system browser (a separate process). The app receives only the resulting SAML token; it never sees your credentials or the login page content.</li>
+      <li><strong>Android crash diagnostics</strong> — Firebase Crashlytics receives technical crash and device information when the Android client fails. VPN profiles, connection logs, SAML credentials or tokens, and VPN tunnel traffic are not intentionally included.</li>
       <li><strong>Demo endpoint (openlawsvpn client)</strong> — a publicly accessible, read-only demo VPN endpoint is available for app review and testing. It uses the SAML/SSO profile at <a href="/demo/saml-client.ovpn">demo/saml-client.ovpn</a>. No user data is stored on this endpoint.</li>
       <li><strong>Relay mode (optional)</strong> — if you use the relay feature, only the data required by its nature to deliver VPN auth to the remote agent transits the openlawsvpn relay service. This data is not stored beyond the duration of the session (60-second TTL). Direct connections never touch openlawsvpn servers.</li>
     </ul>
@@ -102,12 +103,13 @@
     <h2>4. Logging</h2>
     <p><strong>Direct connections</strong> — the app connects directly to your AWS endpoint. No openlawsvpn infrastructure is involved and no connection data is logged by us.</p>
     <p><strong>Relay mode (optional)</strong> — relay traffic passes through the openlawsvpn relay service (AWS API Gateway). Standard access logs are retained for 30 days in AWS CloudWatch for security and abuse-prevention purposes. These logs may include your IP address, timestamp, and request metadata. They are not sold or shared with third parties and are deleted automatically after 30 days.</p>
+    <p><strong>Android crash diagnostics</strong> — crash reports are retained in Firebase Crashlytics for up to 90 days. They are not used for advertising, personalization, or account management.</p>
 
     <h2>5. Third-party services in the apps</h2>
-    <p>The app does not integrate any third-party analytics, advertising, crash-reporting, or data-processing services.</p>
+    <p>The Android client integrates <strong>Firebase Crashlytics</strong>, a Google service, solely for crash reporting and app-stability diagnostics. Firebase processes this information on our behalf. The apps do not integrate Firebase Analytics or third-party advertising SDKs. For details about Google's processing and safeguards, see <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase Privacy and Security</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.</p>
 
     <h2>6. Website analytics and advertising</h2>
-    <p>When you visit <strong>openlawsvpn.com</strong>, we ask for your permission before loading optional measurement services. These services are not part of the mobile or desktop apps.</p>
+    <p>When you visit <strong>openlawsvpn.com</strong>, we ask for your permission before loading optional website measurement services. Google Analytics, Google Ads, and GoatCounter are not part of the mobile or desktop apps; Android's Firebase Crashlytics integration is described separately above.</p>
     <ul>
       <li><strong>Google Analytics</strong> — helps us understand aggregated website visits and which pages are useful.</li>
       <li><strong>Google Ads</strong> — helps us measure whether visits from our advertising campaigns reach the website.</li>

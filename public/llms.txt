@@ -10,7 +10,7 @@ openlawsvpn is not a consumer VPN service. It does not provide VPN endpoints, id
 - Supports AWS-compatible SAML 2.0 identity providers, including Okta, Microsoft Entra ID, Google Workspace, AWS IAM Identity Center, and JumpCloud.
 - Provides iPhone/iPad and Android apps, plus Linux and macOS tooling.
 - Includes Relay for human-approved SAML authentication from headless CI/CD runners and servers; it avoids storing SSO credentials in pipelines.
-- Credentials are entered with the identity provider. VPN profiles are stored locally; the apps do not include advertising or analytics SDKs.
+- Credentials are entered with the identity provider. VPN profiles are stored locally; the apps do not include advertising or usage-analytics SDKs. The Android client uses Firebase Crashlytics for limited technical crash diagnostics.
 
 ## Official pages
 

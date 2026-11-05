@@ -8,7 +8,7 @@
   const storageKey = 'openlawsvpn-consent-v1';
   const languageStorageKey = 'openlawsvpn-language-v1';
   const consentMaxAge = 180 * 24 * 60 * 60 * 1000;
-  const analyticsId = 'G-0FT1WE72MX';
+  const analyticsId = 'G-11PZ87L5T4';
   const adsId = 'AW-18373098344';
   let googleTagLoaded = false;
   let analyticsConfigured = false;
